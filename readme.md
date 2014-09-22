@@ -1,4 +1,4 @@
-Nette Playground base on Nette Sandbox
+Nette Playground based on Nette Sandbox
 =======================================
 
 Some experiments with nette\forms + Kdyby\Replicator + Bootstrap From Twitter
