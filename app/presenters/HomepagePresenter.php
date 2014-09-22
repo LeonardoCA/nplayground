@@ -73,6 +73,9 @@ class HomepagePresenter extends BasePresenter
 						$removeBtn = $address->addSubmit('remove', '-')
 							->setValidationScope(false);
 						$removeBtn->onClick[] = $removeEvent;
+						foreach ($address->getControls() as $control) {
+							$this->addBootstrapStylesToFormControl($control);
+						}
 					},
 					1
 				);
@@ -82,6 +85,9 @@ class HomepagePresenter extends BasePresenter
 				$removeBtn = $user->addSubmit('remove', '-')
 					->setValidationScope(false);
 				$removeBtn->onClick[] = $removeEvent;
+				foreach ($user->getControls() as $control) {
+					$this->addBootstrapStylesToFormControl($control);
+				}
 			},
 			2
 		);
@@ -108,35 +114,38 @@ class HomepagePresenter extends BasePresenter
 		// make form and controls compatible with Twitter Bootstrap
 		$form->getElementPrototype()->class('form-horizontal');
 
-		foreach ($form->getControls() as $control) {
-			//dump($control->getName());
-			if ($control instanceof Controls\Button) {
-				$control->getControlPrototype()->addClass(
-					empty($usedPrimary) ? 'btn btn-primary' : 'btn btn-default'
-				);
-				$usedPrimary = true;
-//			if ($control instanceof Controls\Button) {
-//				$control->getControlPrototype()->addClass(
-//					$control->getName() == 'submit' ? 'btn btn-primary'
-//						: 'btn btn-default'
-//				);
-			} elseif ($control instanceof Controls\TextBase
-				|| $control instanceof Controls\SelectBox
-				|| $control instanceof Controls\MultiSelectBox
-			) {
-				$control->getControlPrototype()->addClass('form-control');
+		//$this['testForm'] = $form;
 
-			} elseif ($control instanceof Controls\Checkbox
-				|| $control instanceof Controls\CheckboxList
-				|| $control instanceof Controls\RadioList
-			) {
-				$control->getSeparatorPrototype()->setName('div')->addClass(
-					$control->getControlPrototype()->type
-				);
-			}
+		foreach ($form->getControls() as $control) {
+			$this->addBootstrapStylesToFormControl($control);
 		}
 
 		return $form;
+	}
+
+
+
+	public function addBootstrapStylesToFormControl($control)
+	{
+		if ($control instanceof Controls\Button) {
+			$control->getControlPrototype()->addClass(
+				$control->getName() == 'submit' ? 'btn btn-primary'
+					: 'btn btn-default'
+			);
+		} elseif ($control instanceof Controls\TextBase
+			|| $control instanceof Controls\SelectBox
+			|| $control instanceof Controls\MultiSelectBox
+		) {
+			$control->getControlPrototype()->addClass('form-control');
+
+		} elseif ($control instanceof Controls\Checkbox
+			|| $control instanceof Controls\CheckboxList
+			|| $control instanceof Controls\RadioList
+		) {
+			$control->getSeparatorPrototype()->setName('div')->addClass(
+				$control->getControlPrototype()->type
+			);
+		}
 	}
 
 
