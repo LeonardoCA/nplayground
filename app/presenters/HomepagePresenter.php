@@ -2,11 +2,14 @@
 
 namespace App\Presenters;
 
-use Nette,
-	Nette\Forms\Controls,
-	Nette\Forms\Container,
-	Nette\Forms\Controls\SubmitButton,
-	App\Model;
+use Nette;
+use Nette\Forms\Controls;
+use Nette\Forms\Container;
+use Nette\Forms\Controls\SubmitButton;
+use Nette\Application\UI;
+use App\Model;
+use Nextras\Forms\Rendering\Bs3FormRenderer;
+use Tracy\Dumper;
 
 /**
  * Homepage presenter.
@@ -16,7 +19,8 @@ class HomepagePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		$this->template->anyVariable = 'any value';
+		$this->template->testFormValues =
+			Dumper::toHtml($this['testForm']->getValues());
 	}
 
 
@@ -73,11 +77,9 @@ class HomepagePresenter extends BasePresenter
 						$removeBtn = $address->addSubmit('remove', '-')
 							->setValidationScope(false);
 						$removeBtn->onClick[] = $removeEvent;
-						foreach ($address->getControls() as $control) {
-							$this->addBootstrapStylesToFormControl($control);
-						}
 					},
-					1
+					1,
+					true
 				);
 				$addBtn = $addresses->addSubmit('add', '+')
 					->setValidationScope(false);
@@ -85,11 +87,9 @@ class HomepagePresenter extends BasePresenter
 				$removeBtn = $user->addSubmit('remove', '-')
 					->setValidationScope(false);
 				$removeBtn->onClick[] = $removeEvent;
-				foreach ($user->getControls() as $control) {
-					$this->addBootstrapStylesToFormControl($control);
-				}
 			},
-			2
+			1,
+			true
 		);
 		$users->addSubmit('add', '+')
 			->setValidationScope(false)
@@ -114,38 +114,18 @@ class HomepagePresenter extends BasePresenter
 		// make form and controls compatible with Twitter Bootstrap
 		$form->getElementPrototype()->class('form-horizontal');
 
-		//$this['testForm'] = $form;
+		$form->onSuccess[] = $this->processTestForm;
 
-		foreach ($form->getControls() as $control) {
-			$this->addBootstrapStylesToFormControl($control);
-		}
+		$form->setRenderer(new Bs3FormRenderer);
 
 		return $form;
 	}
 
 
 
-	public function addBootstrapStylesToFormControl($control)
+	public function processTestForm(UI\Form $form, $values)
 	{
-		if ($control instanceof Controls\Button) {
-			$control->getControlPrototype()->addClass(
-				$control->getName() == 'submit' ? 'btn btn-primary'
-					: 'btn btn-default'
-			);
-		} elseif ($control instanceof Controls\TextBase
-			|| $control instanceof Controls\SelectBox
-			|| $control instanceof Controls\MultiSelectBox
-		) {
-			$control->getControlPrototype()->addClass('form-control');
-
-		} elseif ($control instanceof Controls\Checkbox
-			|| $control instanceof Controls\CheckboxList
-			|| $control instanceof Controls\RadioList
-		) {
-			$control->getSeparatorPrototype()->setName('div')->addClass(
-				$control->getControlPrototype()->type
-			);
-		}
+		$this->flashMessage('Form processing');
 	}
 
 
