@@ -20,6 +20,8 @@ nette:
 	session:
 		expiration: 14 days
 
+	debugger:
+		maxDepth: 7
 
 services:
 	- App\Model\UserManager
@@ -28,3 +30,8 @@ services:
 
 extensions:
 	formsReplicator: Kdyby\Replicator\DI\ReplicatorExtension
+	smartDump: LeonardoCA\Tools\DI\SmartDumpExtension
+
+smartDump:
+	traceMode: 2  #false|number|all
+	showParams: false

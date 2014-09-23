@@ -16,15 +16,16 @@
 	],
 	"require": {
 		"php": ">= 5.3.7",
-		"nette/nette": "~2.2.0",
+		"nette/nette": "@dev",
 		"dg/adminer-custom": "~1.5",
 		"kdyby/forms-replicator": "@dev",
 		"dibi/dibi": "@dev",
 		"jasir/component-tree-panel": "@dev",
-		"nextras/forms": "@dev"
+		"nextras/forms": "@dev",
+		"leonardoca/tools": "@dev"
 	},
 	"require-dev": {
-		"nette/tester": "~1.0"
+		"nette/tester": "@dev"
 	},
 	"minimum-stability": "stable"
 }

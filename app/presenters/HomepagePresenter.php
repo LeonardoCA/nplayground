@@ -118,6 +118,8 @@ class HomepagePresenter extends BasePresenter
 
 		$form->setRenderer(new Bs3FormRenderer);
 
+		sdump($form);
+
 		return $form;
 	}
 
