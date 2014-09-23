@@ -20,7 +20,8 @@
 		"dg/adminer-custom": "~1.5",
 		"kdyby/forms-replicator": "@dev",
 		"dibi/dibi": "@dev",
-		"jasir/component-tree-panel": "@dev"
+		"jasir/component-tree-panel": "@dev",
+		"nextras/forms": "@dev"
 	},
 	"require-dev": {
 		"nette/tester": "~1.0"
