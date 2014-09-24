@@ -74,30 +74,32 @@ class HomepagePresenter extends BasePresenter
 						$address->addText('city', 'City');
 						$address->addText('zip', 'Zip');
 						$address->addCheckbox('send', 'Ship to address');
-						$address->addSubmit('remove', '-')
-							->setValidationScope(false)
-							->getControlPrototype()->addClass('btn-danger')
-							->onClick[] = $removeEvent;
+						$removeBtn = $address->addSubmit('remove', '-')
+							->setValidationScope(false);
+						$removeBtn->getControlPrototype()->addClass(
+							'btn-danger'
+						);
+						$removeBtn->onClick[] = $removeEvent;
 					},
 					1,
 					true
 				);
-				$addresses->addSubmit('add', '+')
-					->setValidationScope(false)
-					->getControlPrototype()->addClass('btn-success')
-					->onClick[] = callback($this, 'MyFormAddElementClicked');
-				$user->addSubmit('remove', '-')
-					->setValidationScope(false)
-					->getControlPrototype()->addClass('btn-danger')
-					->onClick[] = $removeEvent;
+				$addBtn = $addresses->addSubmit('add', '+')
+					->setValidationScope(false);
+				$addBtn->getControlPrototype()->addClass('btn-success');
+				$addBtn->onClick[] = callback($this, 'MyFormAddElementClicked');
+				$removeBtn = $user->addSubmit('remove', '-')
+					->setValidationScope(false);
+				$removeBtn->getControlPrototype()->addClass('btn-danger');
+				$removeBtn->onClick[] = $removeEvent;
 			},
 			1,
 			true
 		);
-		$users->addSubmit('add', '+')
-			->setValidationScope(false)
-			->getControlPrototype()->addClass('btn-success')
-			->onClick[] = callback($this, 'MyFormAddElementClicked');
+		$addBtn = $users->addSubmit('add', '+')
+			->setValidationScope(false);
+		$addBtn->getControlPrototype()->addClass('btn-success');
+		$addBtn->onClick[] = callback($this, 'MyFormAddElementClicked');
 
 		$form->addGroup();
 		$form->addSubmit('submit', 'Send');
