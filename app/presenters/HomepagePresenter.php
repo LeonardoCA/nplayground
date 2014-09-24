@@ -74,51 +74,38 @@ class HomepagePresenter extends BasePresenter
 						$address->addText('city', 'City');
 						$address->addText('zip', 'Zip');
 						$address->addCheckbox('send', 'Ship to address');
-						$removeBtn = $address->addSubmit('remove', '-')
-							->setValidationScope(false);
-						$removeBtn->onClick[] = $removeEvent;
+						$address->addSubmit('remove', '-')
+							->setValidationScope(false)
+							->getControlPrototype()->addClass('btn-danger')
+							->onClick[] = $removeEvent;
 					},
 					1,
 					true
 				);
-				$addBtn = $addresses->addSubmit('add', '+')
-					->setValidationScope(false);
-				$addBtn->onClick[] = callback($this, 'MyFormAddElementClicked');
-				$removeBtn = $user->addSubmit('remove', '-')
-					->setValidationScope(false);
-				$removeBtn->onClick[] = $removeEvent;
+				$addresses->addSubmit('add', '+')
+					->setValidationScope(false)
+					->getControlPrototype()->addClass('btn-success')
+					->onClick[] = callback($this, 'MyFormAddElementClicked');
+				$user->addSubmit('remove', '-')
+					->setValidationScope(false)
+					->getControlPrototype()->addClass('btn-danger')
+					->onClick[] = $removeEvent;
 			},
 			1,
 			true
 		);
 		$users->addSubmit('add', '+')
 			->setValidationScope(false)
+			->getControlPrototype()->addClass('btn-success')
 			->onClick[] = callback($this, 'MyFormAddElementClicked');
 
 		$form->addGroup();
 		$form->addSubmit('submit', 'Send');
 		$form->addSubmit('cancel', 'Cancel');
 
-		// setup form rendering
-		$renderer = $form->getRenderer();
-		$renderer->wrappers['controls']['container'] = null;
-		$renderer->wrappers['pair']['container'] = 'div class=form-group';
-		$renderer->wrappers['pair']['.error'] = 'has-error';
-		$renderer->wrappers['control']['container'] = 'div class=col-sm-9';
-		$renderer->wrappers['label']['container'] =
-			'div class="col-sm-3 control-label"';
-		$renderer->wrappers['control']['description'] = 'span class=help-block';
-		$renderer->wrappers['control']['errorcontainer'] =
-			'span class=help-block';
-
-		// make form and controls compatible with Twitter Bootstrap
-		$form->getElementPrototype()->class('form-horizontal');
-
 		$form->onSuccess[] = $this->processTestForm;
 
 		$form->setRenderer(new Bs3FormRenderer);
-
-		sdump($form);
 
 		return $form;
 	}
