@@ -35,7 +35,7 @@
 														id="{$section['menuItems']->lookupPath()}"
 														class="replicator-sortable"
 														data-replicator-name="{$section['menuItems']->name}"
-														data-connectWith="{$replicatorHtmlId}-replicatorId-{$section['menuItems']->name}">
+														data-replicator-sortable-connectWith="{$replicatorHtmlId}-replicatorId-{$section['menuItems']->name}">
 														{foreach $section['menuItems']->containers as $rid => $mitem}
 															<div
 																class="replicator-sortable-item"
@@ -99,8 +99,10 @@
 										helper: "clone",
 										create: function (e, ui) {
 											var sortableObj = $(e.target);
-											if (sortableObj.attr('data-connectWith') !== undefined) {
-												sortableObj.sortable('option', { connectWith: "[data-connectWith=" + sortableObj.attr('data-connectWith') + "]"});
+											if (sortableObj.attr('data-replicator-sortable-connectWith') !== undefined) {
+												sortableObj.sortable('option', {
+													connectWith: "[data-replicator-sortable-connectWith=" + sortableObj.attr('data-replicator-sortable-connectWith') + "]"
+												});
 												sortableObj.sortable({
 													receive: function (e, ui) {
 														var ids = ui.item.parent().find('.replicator-sortable-item').map(function () {
@@ -114,27 +116,15 @@
 																	id: $(this).attr('data-replicator-item-id')
 																};
 															});
-															//console.log('orig:' + $(this).attr('name'));
-															var partRegexp;
-															var replaceBy;
 															var index;
 															for (index = 0; index < replicators.length; ++index) {
-																//console.log(replicators[index]);
-																if (index == 0) {
-																	// actual replicator container item moved
-																	partRegexp = new RegExp("\\[" + replicators[index].name + "]\\[\\d+](?!.*\\[remove]$)", "g");
-																	replaceBy = "[" + replicators[index].name + "][" + nextId + "]";
-																} else {
-																	// any parent replicator containers
-																	partRegexp = new RegExp("(\\[?" + replicators[index].name + "]?)\\[\\d+](?!.*\\[remove]$)", "g");
-																	replaceBy = "$1[" + replicators[index].id + "]";
-																}
-																//console.log('partRegexp: ' + partRegexp + ' replaceBy: ' + replaceBy);
-																$(this).attr('name', $(this).attr('name').replace(partRegexp, replaceBy));
+																$(this).attr('name', $(this).attr('name').replace(
+																	new RegExp("(\\[?" + replicators[index].name + "]?)\\[\\d+](?!.*\\[remove]$)", "g"),
+																	"$1[" + (index == 0 ? nextId : replicators[index].id) + "]"
+																));
 															}
-															//console.log('changed to: ' + $(this).attr('name'));
 														});
-														ui.item.find('[type="submit"][value="-"]').click();
+														ui.item.find('[type="submit"][data-replicator-item-remove]').click();
 													}
 												});
 											}

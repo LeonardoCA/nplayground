@@ -52,6 +52,7 @@ class HomepagePresenter extends BasePresenter
 						$menuItems->addSubmit('remove', '-')
 							->setValidationScope(false)
 							->setAttribute('class', 'btn btn-danger btn-sm')
+							->setAttribute('data-replicator-item-remove', 'yes')
 							->addRemoveOnClick($removeEventHandler);
 						$this->controlsInit($menuItems);
 					},
@@ -64,6 +65,7 @@ class HomepagePresenter extends BasePresenter
 				$column->addSubmit('remove', '-')
 					->setValidationScope(false)
 					->setAttribute('class', 'btn btn-sm btn-danger')
+					->setAttribute('data-replicator-item-remove', 'yes')
 					->addRemoveOnClick($removeEventHandler);
 				$this->controlsInit($column);
 			},
