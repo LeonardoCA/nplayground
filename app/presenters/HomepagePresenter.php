@@ -2,13 +2,14 @@
 
 namespace App\Presenters;
 
-use Nette;
-use Nette\Forms\Controls;
-use Nette\Forms\Container;
-use Nette\Forms\Controls\SubmitButton;
-use Nette\Application\UI;
 use App\Model;
-use Nextras\Forms\Rendering\Bs3FormRenderer;
+use Kdyby\Replicator;
+use LeonardoCA\Forms\Rendering\Bs3FormRenderer;
+use Nette;
+use Nette\Application\UI;
+use Nette\ComponentModel\IContainer;
+use Nette\Forms\Container;
+use Nette\Forms\Controls;
 use Tracy\Dumper;
 
 /**
@@ -28,112 +29,134 @@ class HomepagePresenter extends BasePresenter
 	public function createComponentTestForm()
 	{
 		$form = new Nette\Application\UI\Form();
-
-		$form->addGroup('Personal data');
-		$form->addText('name', 'Your name')
-			->setRequired('Enter your name');
-		$form->addRadioList(
-			'gender',
-			'Your gender',
-			array(
-				'male',
-				'female',
-			)
-		);
-		$form->addCheckboxList(
-			'colors',
-			'Favorite colors:',
-			array(
-				'red',
-				'green',
-				'blue',
-			)
-		);
-		$form->addSelect(
-			'country',
-			'Country',
-			array(
-				'Burundi',
-				'Qumran',
-				'Saint Georges Island',
-			)
-		);
-		$form->addTextArea('note', 'Comment');
-
-		$form->addGroup('Addresses');
-		$removeEvent = callback($this, 'MyFormRemoveElementClicked');
-		$users = $form->addDynamic(
-			'users',
-			function (Container $user) use ($removeEvent) {
-				$user->addText('name', 'Name');
-				$user->addText('surname', 'surname');
-				$addresses = $user->addDynamic(
-					'addresses',
-					function (Container $address) use ($removeEvent) {
-						$address->addText('street', 'Street');
-						$address->addText('city', 'City');
-						$address->addText('zip', 'Zip');
-						$address->addCheckbox('send', 'Ship to address');
-						$removeBtn = $address->addSubmit('remove', '-')
-							->setValidationScope(false);
-						$removeBtn->getControlPrototype()->addClass(
-							'btn-danger'
+		$addEventHandler = callback($this, 'handleAddItem');
+		$removeEventHandler = callback($this, 'handleRemoveItem');
+		$form->addGroup('Footer menu');
+		$form->addDynamic(
+			'sections',
+			function (Container $column) use (
+				$removeEventHandler, $addEventHandler
+			) {
+				$column->addText('title', 'Column Title')->getControlPrototype()
+					->addClass('col-sm-5')->addAttributes(['placeholder' => 'Column Title']);
+				$column->addDynamic(
+					'menuItems',
+					function (Container $menuItems) use ($removeEventHandler) {
+						$menuItems->addText('text', 'Text')
+							->getControlPrototype()->addClass('col-sm-5')
+							->addAttributes(['placeholder' => 'Text']);
+						$menuItems->addText('url', 'Url')->getControlPrototype()
+							->addClass('col-sm-5')->addAttributes(
+							['placeholder' => 'Url']
 						);
-						$removeBtn->onClick[] = $removeEvent;
+						$menuItems->addSubmit('remove', '-')
+							->setValidationScope(false)
+							->setAttribute('class', 'btn btn-danger btn-sm')
+							->addRemoveOnClick($removeEventHandler);
+						$this->controlsInit($menuItems);
 					},
 					1,
 					true
-				);
-				$addBtn = $addresses->addSubmit('add', '+')
-					->setValidationScope(false);
-				$addBtn->getControlPrototype()->addClass('btn-success');
-				$addBtn->onClick[] = callback($this, 'MyFormAddElementClicked');
-				$removeBtn = $user->addSubmit('remove', '-')
-					->setValidationScope(false);
-				$removeBtn->getControlPrototype()->addClass('btn-danger');
-				$removeBtn->onClick[] = $removeEvent;
+				)->addSubmit('add', '+')
+					->setValidationScope(false)
+					->setAttribute('class', 'btn btn-success btn-sm')
+					->addCreateOnClick(true, $addEventHandler);
+				$column->addSubmit('remove', '-')
+					->setValidationScope(false)
+					->setAttribute('class', 'btn btn-sm btn-danger')
+					->addRemoveOnClick($removeEventHandler);
+				$this->controlsInit($column);
 			},
-			1,
+			2,
 			true
-		);
-		$addBtn = $users->addSubmit('add', '+')
-			->setValidationScope(false);
-		$addBtn->getControlPrototype()->addClass('btn-success');
-		$addBtn->onClick[] = callback($this, 'MyFormAddElementClicked');
-
+		)->addSubmit('add', '+')
+			->setValidationScope(false)
+			->setAttribute('class', 'btn btn-sm btn-success')
+			->addCreateOnClick(true, $addEventHandler);
 		$form->addGroup();
-		$form->addSubmit('submit', 'Send');
+		$form->addSubmit('submit', 'Save');
 		$form->addSubmit('cancel', 'Cancel');
 
+		$this->controlsInit($form);
+		$form->getElementPrototype()->addClass('form-horizontal');
+
 		$form->onSuccess[] = $this->processTestForm;
-
 		$form->setRenderer(new Bs3FormRenderer);
-
 		return $form;
+	}
+
+
+
+	private function controlsInit($container)
+	{
+		foreach ($container->getControls() as $control) {
+			if ($control instanceof Controls\Button) {
+//				$markAsPrimary = $control === $primaryButton
+//					|| (!isset($this->primary) && empty($usedPrimary)
+//						&& $control->parent instanceof Form);
+//				if ($markAsPrimary) {
+//					$class = 'btn btn-primary';
+//					$usedPrimary = true;
+//				} else {
+//					$class = 'btn btn-default';
+//				}
+				if ($control->getName() == 'submit') {
+					$class = 'btn btn-primary';
+				} else {
+					$class = 'btn btn-default';
+				}
+				$control->getControlPrototype()->addClass($class);
+
+			} elseif ($control instanceof Controls\TextBase
+				|| $control instanceof Controls\SelectBox
+				|| $control instanceof Controls\MultiSelectBox
+			) {
+				$control->getControlPrototype()->addClass('form-control');
+
+			} elseif ($control instanceof Controls\Checkbox
+				|| $control instanceof Controls\CheckboxList
+				|| $control instanceof Controls\RadioList
+			) {
+				$control->getSeparatorPrototype()->setName('div')->addClass(
+					$control->getControlPrototype()->type
+				);
+			}
+		}
 	}
 
 
 
 	public function processTestForm(UI\Form $form, $values)
 	{
-		$this->flashMessage('Form processing');
+		//$this->flashMessage('Form processing');
 	}
 
 
 
-	public function MyFormAddElementClicked(SubmitButton $button)
-	{
-		$button->parent->createOne();
+	/**
+	 * Handle add item
+	 *
+	 * @param Replicator\Container $replicator
+	 * @param IContainer           $item
+	 */
+	public function handleAddItem(
+		Replicator\Container $replicator, IContainer $item
+	) {
+		//$this->flashMessage('Form add');
 	}
 
 
 
-	public function MyFormRemoveElementClicked(SubmitButton $button)
-	{
-		// first parent is container
-		// second parent is it's replicator
-		$users = $button->parent->parent;
-		$users->remove($button->parent, true);
+	/**
+	 * Handle remove item
+	 *
+	 * @param Replicator\Container $replicator
+	 * @param IContainer           $item
+	 */
+	public function handleRemoveItem(
+		Replicator\Container $replicator, IContainer $item
+	) {
+		//$this->flashMessage('Form remove');
 	}
 
 }

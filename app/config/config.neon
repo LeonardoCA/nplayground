@@ -21,7 +21,7 @@ nette:
 		expiration: 14 days
 
 	debugger:
-		maxDepth: 7
+		maxDepth: 3
 
 services:
 	- App\Model\UserManager
@@ -33,5 +33,5 @@ extensions:
 	smartDump: LeonardoCA\Tools\DI\SmartDumpExtension
 
 smartDump:
-	traceMode: 2  #false|number|all
+	traceMode: false  #false|number|all
 	showParams: false

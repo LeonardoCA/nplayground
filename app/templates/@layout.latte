@@ -6,19 +6,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta charset="utf-8">
 
 	<title>{ifset #title}{include title|striptags} | {/ifset}Nette Playground</title>
 
-	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
-	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
 	<link rel="stylesheet" href="{$basePath}/assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{$basePath}/assets/google-code-prettify/prettify.css">
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
 	<script src="{$basePath}/assets/google-code-prettify/prettify.js"></script>
 	{!prettyPrintStyle()}
 	{block head}{/block}
+	<script src="/assets/jquery-1.11.1.min.js"></script>
+	<script src="/assets/jquery-ui-1.11.1/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -40,7 +43,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
-			<li class="active"><a href="#"><span class="glyphicon glyphicon-wrench"></span> Forms</a></li>
+			<li class="active"><a href="/"><span class="glyphicon glyphicon-wrench"></span> Forms</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
@@ -63,8 +66,6 @@
 	</div>
 
 	{block scripts}
-	<script src="/assets/jquery-1.11.1.min.js"></script>
-    <script src="/assets/jquery-ui-1.11.1/jquery-ui.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.js"></script>
 	<script src="{$basePath}/js/netteForms.js"></script>
 	<script src="{$basePath}/js/main.js"></script>

@@ -1,38 +1,166 @@
 {block content}
-<div id="content">
-	<div class="row">
-	  <div class="col-md-6">
-	  	<div class="panel panel-default">
-      	  <div class="panel-heading">
-      		<h3 class="panel-title">Test Form</h3>
-      	  </div>
-      	  <div class="panel-body">
-      	  	{capture $testForm}
-      			{control testForm}
-      		{/capture}
-      		{!$testForm}
-      	  </div>
-      	</div>
-	  </div>
-	  <div class="col-md-6">
-	  	<div class="panel panel-default">
-      	  <div class="panel-heading">
-      		<h3 class="panel-title">Data</h3>
-      	  </div>
-      	  <div class="panel-body">
-      		{!$testFormValues}
-      	  </div>
-      	</div>
-		<div class="panel panel-default">
-		  <div class="panel-heading">
-			<h3 class="panel-title">Html</h3>
-		  </div>
-		  <div class="panel-body">
-			<pre class="prettyprint linenums pre-scrollable">{tidyFormatString($testForm)}</pre>
-			<script>prettyPrint();</script>
-		  </div>
+	<div id="content">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Test Form</h3>
+					</div>
+					<div class="panel-body">
+						<div n:snippet="testForm">
+							{var $renderAsControl = 0}
+							{? Tracy\Debugger::timer()}
+							{capture $testFormHtml}
+								{if $renderAsControl}
+									{control testForm}
+								{else}
+									{form testForm}
+									{$form->render('errors')}
+									{var $replicatorHtmlId = $form['sections']->lookupPath()}
+										<div id="{$replicatorHtmlId}"
+											 class="replicator-sortable"
+											 data-replicator-name="{$form['sections']->name}">
+											{foreach $form['sections']->containers as $sid => $section}
+												<div
+													class="replicator-sortable-item"
+													title="Drag to reorder."
+													data-replicator-item-id="{$sid}">
+													<div class="form-group">
+														<div
+															class="col-sm-5">
+															{input $section['title']}
+														</div>
+													</div>
+													<div
+														id="{$section['menuItems']->lookupPath()}"
+														class="replicator-sortable"
+														data-replicator-name="{$section['menuItems']->name}"
+														data-connectWith="{$replicatorHtmlId}-replicatorId-{$section['menuItems']->name}">
+														{foreach $section['menuItems']->containers as $rid => $mitem}
+															<div
+																class="replicator-sortable-item"
+																title="Drag to reorder."
+																data-replicator-item-id="{$rid}">
+																<div
+																	class="form-group">
+																	<div
+																		class="col-sm-5">
+																		{input $mitem['text']}
+																	</div>
+																	<div
+																		class="col-sm-5">
+																		{input $mitem['url']}
+																	</div>
+																	<div
+																		class="col-sm-2 pull-right">
+																		{input $mitem['remove']} {if $iterator->last}{input $section['menuItems']['add']}{/if}
+																	</div>
+																</div>
+															</div>
+														{/foreach}
+													</div>
+													<div
+														class="form-group">
+														<div class="col-sm-4">
+															{input $section['remove']}
+															{if $iterator->last}{input $form['sections']['add']}{/if}
+														</div>
+													</div>
+												</div>
+											{/foreach}
+										</div>
+										<div class="container-fluid">
+											<div class="form-group">
+												<div class="pull-right">
+													{input cancel}
+													{input submit}
+												</div>
+											</div>
+										</div>
+									{/form}
+								{/if}
+							{/capture}
+							{var $renderTime = Tracy\Debugger::timer()}
+							<div class="row">
+								<div class="col-sm-4 pull-right">
+									<code>
+										(rendered in {$renderTime*1000|number:2}
+										ms)
+									</code>
+								</div>
+							</div>
+							{!$testFormHtml}
+							<script>
+								$(function () {
+									$(".replicator-sortable").sortable({
+										forcePlaceholderSize: true,
+										cursor: 'move',
+										axis: 'y',
+										helper: "clone",
+										create: function (e, ui) {
+											var sortableObj = $(e.target);
+											if (sortableObj.attr('data-connectWith') !== undefined) {
+												sortableObj.sortable('option', { connectWith: "[data-connectWith=" + sortableObj.attr('data-connectWith') + "]"});
+												sortableObj.sortable({
+													receive: function (e, ui) {
+														var ids = ui.item.parent().find('.replicator-sortable-item').map(function () {
+															return $(this).attr('data-replicator-item-id');
+														}).get();
+														var nextId = Math.max.apply(Math, ids) + 1;
+														ui.item.find('input').each(function () {
+															var replicators = $(this).parents('[data-replicator-item-id]').map(function(){
+																return {
+																	name: $(this).parent().attr('data-replicator-name'),
+																	id: $(this).attr('data-replicator-item-id')
+																};
+															});
+															//console.log('orig:' + $(this).attr('name'));
+															var partRegexp;
+															var replaceBy;
+															var index;
+															for (index = 0; index < replicators.length; ++index) {
+																//console.log(replicators[index]);
+																if (index == 0) {
+																	// actual replicator container item moved
+																	partRegexp = new RegExp("\\[" + replicators[index].name + "]\\[\\d+](?!.*\\[remove]$)", "g");
+																	replaceBy = "[" + replicators[index].name + "][" + nextId + "]";
+																} else {
+																	// any parent replicator containers
+																	partRegexp = new RegExp("(\\[?" + replicators[index].name + "]?)\\[\\d+](?!.*\\[remove]$)", "g");
+																	replaceBy = "$1[" + replicators[index].id + "]";
+																}
+																//console.log('partRegexp: ' + partRegexp + ' replaceBy: ' + replaceBy);
+																$(this).attr('name', $(this).attr('name').replace(partRegexp, replaceBy));
+															}
+															//console.log('changed to: ' + $(this).attr('name'));
+														});
+														ui.item.find('[type="submit"][value="-"]').click();
+													}
+												});
+											}
+										}
+									});
+								});
+							</script>
+							{if false}
+								<pre
+									class="prettyprint linenums pre-scrollable">{tidyFormatString($testFormHtml)}</pre>
+								<script>prettyPrint();</script>
+							{/if}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Data</h3>
+					</div>
+					<div class="panel-body no-padding">
+						{!$testFormValues}
+					</div>
+				</div>
+			</div>
 		</div>
-	  </div>
 	</div>
-</div>
 {/block}
