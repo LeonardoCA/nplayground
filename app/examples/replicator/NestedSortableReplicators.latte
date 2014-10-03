@@ -1,0 +1,101 @@
+{var $renderAsControl = 0}
+{if $renderAsControl}
+	{control form}
+{else}
+	{form form}
+	{$form->render('errors')}
+	{var $replicatorHtmlId = $form['sections']->lookupPath()}
+		<div id="{$replicatorHtmlId}"
+			 class="replicator-sortable"
+			 data-replicator-name="{$form['sections']->name}">
+			{foreach $form['sections']->containers as $sid => $section}
+				<div class="replicator-sortable-item"
+					 title="Drag to reorder."
+					 data-replicator-item-id="{$sid}">
+					<div class="form-group">
+						<div class="col-sm-5">
+							{input $section['title']}
+						</div>
+					</div>
+					<div id="{$section['menuItems']->lookupPath()}"
+						 class="replicator-sortable"
+						 data-replicator-name="{$section['menuItems']->name}"
+						 data-replicator-sortable-connectWith="{$replicatorHtmlId}-replicatorId-{$section['menuItems']->name}">
+						{foreach $section['menuItems']->containers as $rid => $mitem}
+							<div class="replicator-sortable-item"
+								 title="Drag to reorder."
+								 data-replicator-item-id="{$rid}">
+								<div class="form-group">
+									<div class="col-sm-5">
+										{input $mitem['text']}
+									</div>
+									<div class="col-sm-5">
+										{input $mitem['url']}
+									</div>
+									<div class="col-sm-2 pull-right">
+										{input $mitem['remove']} {if $iterator->last}{input $section['menuItems']['add']}{/if}
+									</div>
+								</div>
+							</div>
+						{/foreach}
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4">
+							{input $section['remove']}
+							{if $iterator->last}{input $form['sections']['add']}{/if}
+						</div>
+					</div>
+				</div>
+			{/foreach}
+		</div>
+		<div class="container-fluid">
+			<div class="form-group">
+				<div class="pull-right">
+					{input cancel}
+					{input submit}
+				</div>
+			</div>
+		</div>
+	{/form}
+	<script>
+		$(function () {
+			$(".replicator-sortable").sortable({
+				forcePlaceholderSize: true,
+				cursor: 'move',
+				axis: 'y',
+				helper: "clone",
+				create: function (e, ui) {
+					var sortableObj = $(e.target);
+					if (sortableObj.attr('data-replicator-sortable-connectWith') !== undefined) {
+						sortableObj.sortable('option', {
+							connectWith: "[data-replicator-sortable-connectWith=" + sortableObj.attr('data-replicator-sortable-connectWith') + "]"
+						});
+						sortableObj.sortable({
+							receive: function (e, ui) {
+								var ids = ui.item.parent().find('.replicator-sortable-item').map(function () {
+									return $(this).attr('data-replicator-item-id');
+								}).get();
+								var nextId = Math.max.apply(Math, ids) + 1;
+								ui.item.find('input').each(function () {
+									var replicators = $(this).parents('[data-replicator-item-id]').map(function () {
+										return {
+											name: $(this).parent().attr('data-replicator-name'),
+											id: $(this).attr('data-replicator-item-id')
+										};
+									});
+									for (var index = 0; index < replicators.length; ++index) {
+										$(this).attr('name', $(this).attr('name').replace(
+											new RegExp("(\\[?" + replicators[index].name + "]?)\\[\\d+](?!.*\\[remove]$)", "g"),
+											"$1[" + (index == 0 ? nextId : replicators[index].id) + "]"
+										));
+									}
+								});
+								ui.item.find('[type="submit"][data-replicator-item-remove]').click();
+							}
+						});
+					}
+				}
+			});
+		});
+	</script>
+{/if}
