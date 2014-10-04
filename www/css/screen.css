@@ -24,22 +24,18 @@ html.js .jshidden {
 	display: none;
 }
 
-.no-padding{
+.no-padding {
 	padding: 0 !important;
 }
 
-body{
-	background-color: #111 !important;
+.ui-sortable-helper, .replicator-sortable-item:hover {
+	background-color: rgba(240, 240, 255, 0.8);
+	box-shadow: inset 0px 0px 100px -25px #669, -1px 0px 21px 0px #669;
+	-webkit-box-shadow: inset 0px 0px 50px 5px rgba(189, 236, 255, 0.61), 0px 0px 20px 10px rgba(189, 236, 255, 0.61);
+	-moz-box-shadow: inset 0px 0px 100px -25px #669, -1px 0px 21px 0px #669;
+	-o-box-shadow: inset 0px 0px 100px -25px #669, -1px 0px 21px 0px #669;
 }
 
-.navbar-default .navbar-brand {
-	color: #65B042;
-}
-
-.navbar-default {
-	background-color: #151617;
-}
-
-.panel-default {
-	border-color: #666;
+.ui-state-highlight {
+	background-color: rgba(230, 230, 230, 0.61);
 }
