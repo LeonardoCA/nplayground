@@ -40,6 +40,22 @@ module.exports = function (grunt) {
 		//		dest: 'build/<%= pkg.name %>.min.js'
 		//	}
 		//},
+		bump: {
+			options: {
+				files: ['package.json', 'composer.json'],
+				updateConfigs: ['pkg', 'composer'],
+				commit: true,
+				commitMessage: 'Release v%VERSION%',
+				commitFiles: ['package.json'],
+				createTag: true,
+				tagName: 'v%VERSION%',
+				tagMessage: 'Version %VERSION%',
+				push: true,
+				pushTo: 'upstream',
+				gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+				globalReplace: false
+			}
+		},
 		notify: {
 			//task_name: {
 			//	options: {
@@ -57,6 +73,11 @@ module.exports = function (grunt) {
 					message: 'Grunt job for <%= pkg.name %> finished!'
 				}
 			},
+			bump: {
+				options: {
+					message: 'Released <%= pkg.name %> version <%= pkg.version %>'
+				}
+			},
 			bower: {
 				options: {
 					message: 'Bower installed all packages for <%= pkg.name %>'
@@ -71,6 +92,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-nette-tester');
 	grunt.loadNpmTasks('grunt-nette-basepath');
 	grunt.loadNpmTasks('grunt-notify');
+	grunt.loadNpmTasks('grunt-bump');
 
 	grunt.registerTask('default', ['notify:default']);
 	grunt.registerTask('bowerInstall', ['bower', 'notify:bower']);
