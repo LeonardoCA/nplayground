@@ -6,7 +6,7 @@
 	{var $renderTime = Tracy\Debugger::timer()}
 	<div id="content">
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Tested Component
@@ -20,7 +20,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6">
+			<div class="col-lg-7">
 				{var $testFormValues = array_key_exists('form', $_presenter->componentData) ? $_presenter->componentData['form']->getValues() : null}
 				{if $testFormValues}
 					<div class="panel panel-default">

@@ -69,7 +69,7 @@ class NestedSortableReplicators extends Control
 							);
 						$menuItems->addSubmit('remove', '-')
 							->setValidationScope(false)
-							->setAttribute('class', 'btn btn-danger btn-sm')
+							->setAttribute('class', 'btn-danger btn-sm')
 							->setAttribute('data-replicator-item-remove', 'yes')
 							->addRemoveOnClick($removeEventHandler);
 						$this->controlsInit($menuItems);
@@ -82,7 +82,7 @@ class NestedSortableReplicators extends Control
 					->addCreateOnClick(true, $addEventHandler);
 				$column->addSubmit('remove', '-')
 					->setValidationScope(false)
-					->setAttribute('class', 'btn btn-sm btn-danger')
+					->setAttribute('class', 'btn-sm btn-danger')
 					->setAttribute('data-replicator-item-remove', 'yes')
 					->addRemoveOnClick($removeEventHandler);
 				$this->controlsInit($column);
