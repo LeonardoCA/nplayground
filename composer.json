@@ -1,17 +1,17 @@
 {
-	"name": "nette/sandbox",
-	"description": "The sandbox is a pre-packaged Nette Framework project, basic configured structure for your application.",
-	"homepage": "http://nette.org",
+	"name": "leonardoca/nette-playground",
+	"description": "The sandbox is a pre-packaged Nette Framework project, including bootstrap from twitter and grunt support.",
+	"homepage": "https://bitbucket.org/leonardoca/netteplayground",
 	"type": "project",
-	"license": ["Unlicense"],
+	"license": [
+		"BSD-3-Clause",
+		"GPL-2.0",
+		"GPL-3.0"
+	],
 	"authors": [
 		{
-			"name": "David Grudl",
-			"homepage": "http://davidgrudl.com"
-		},
-		{
-			"name": "Nette Community",
-			"homepage": "http://nette.org/contributors"
+			"name": "Leonard Odlozilik",
+			"homepage": "https://bitbucket.org/leonardoca/netteplayground"
 		}
 	],
 	"require": {
