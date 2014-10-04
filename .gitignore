@@ -1,6 +1,9 @@
 log/*
 temp/*
 vendor/*
+bower_components/*
+node_modules/*
+www/assets/*
 !vendor/others
 
 .DS_Store

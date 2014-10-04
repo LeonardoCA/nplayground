@@ -10,18 +10,15 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta charset="utf-8">
 	<title>{ifset #title}{include title|striptags} | {/ifset}Nette Playground</title>
-	<link rel="stylesheet" href="{$basePath}/assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{$basePath}/assets/google-code-prettify/prettify.css">
+	<link rel="stylesheet" href="{$basePath}/assets/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="{$basePath}/assets/google-code-prettify/prettify.min.css">
 	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
 	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
-	<script src="{$basePath}/assets/google-code-prettify/prettify.js"></script>
+	<script src="{$basePath}/assets/google-code-prettify/prettify.min.js"></script>
 	{!prettyPrintStyle()}
 	{block head}{/block}
-	<script src="/assets/jquery-1.11.1.min.js"></script>
-	<script src="/assets/jquery-ui-1.11.1/jquery-ui.min.js"></script>
 </head>
-
 <body>
 	<script> document.documentElement.className+=' js' </script>
 
@@ -64,8 +61,12 @@
 	</div>
 
 	{block scripts}
-    <script src="/assets/bootstrap/js/bootstrap.js"></script>
-	<script src="{$basePath}/js/netteForms.js"></script>
+	<script src="{$basePath}/assets/jquery/jquery.js"></script>
+	<script src="{$basePath}/assets/jquery-ui/jquery-ui.js"></script>
+    <script src="{$basePath}/assets/bootstrap/bootstrap.js"></script>
+	<script src="{$basePath}/assets/nette-forms/netteForms.js"></script>
+	<script src="{$basePath}/assets/nette.ajax.js/nette.ajax.js"></script>
+	<script src="{$basePath}/js/sortableReplicator.ajax.js"></script>
 	<script src="{$basePath}/js/main.js"></script>
 	{/block}
 </body>
