@@ -16,6 +16,13 @@ class HomepagePresenter extends BasePresenter
 
 
 
+	public function renderDefault()
+	{
+		$this->template->title = 'Sortable Replicators';
+	}
+
+
+
 	public function createComponentTestedComponent()
 	{
 		$control = new NestedSortableReplicators;
