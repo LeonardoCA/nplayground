@@ -56,4 +56,4 @@ License
 - Nette Playground: The Unlicense (http://unlicense.org)
 
 ### Release History
-See the [CHANGELOG](CHANGELOG).
+See the [CHANGELOG](CHANGELOG.md).
