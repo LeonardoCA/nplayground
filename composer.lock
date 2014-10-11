@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6bfafd3911a239b76c0a163e09a53b67",
+    "hash": "4dfac6030b54bcc70596921eb80a7274",
     "packages": [
         {
             "name": "dg/adminer-custom",
@@ -257,17 +257,67 @@
             "time": "2014-08-24 18:26:48"
         },
         {
+            "name": "leonardoca/nbootstrap",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LeonardoCA/nbootstrap.git",
+                "reference": "9116e81dff8d78f327226b7be4ae24295375d440"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LeonardoCA/nbootstrap/zipball/9116e81dff8d78f327226b7be4ae24295375d440",
+                "reference": "9116e81dff8d78f327226b7be4ae24295375d440",
+                "shasum": ""
+            },
+            "require": {
+                "nette/nette": "~2.1",
+                "php": ">=5.3.0"
+            },
+            "replace": {
+                "leonardoca/bootstrap-extension": "*"
+            },
+            "require-dev": {
+                "nette/tester": "~1.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeonardoCA\\Bootstrap\\": "src/Bootstrap/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "LeonardoCA",
+                    "email": "leonard.odlozilik@gmail.com"
+                }
+            ],
+            "description": "Nette Framework add-on for easy integration with Bootstrap from Twitter",
+            "keywords": [
+                "bootstrap",
+                "nette",
+                "twitter"
+            ],
+            "time": "2014-10-11 15:49:43"
+        },
+        {
             "name": "leonardoca/tools",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeonardoCA/Tools.git",
-                "reference": "6c014bd3bbed84273994b3d53ca3939e5c9e0abf"
+                "reference": "95713cb59e72e7f1decfb856ba8832ab6112f992"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeonardoCA/Tools/zipball/6c014bd3bbed84273994b3d53ca3939e5c9e0abf",
-                "reference": "6c014bd3bbed84273994b3d53ca3939e5c9e0abf",
+                "url": "https://api.github.com/repos/LeonardoCA/Tools/zipball/95713cb59e72e7f1decfb856ba8832ab6112f992",
+                "reference": "95713cb59e72e7f1decfb856ba8832ab6112f992",
                 "shasum": ""
             },
             "require": {
@@ -306,7 +356,7 @@
                 "nette",
                 "tools"
             ],
-            "time": "2014-09-26 21:49:46"
+            "time": "2014-10-11 15:48:55"
         },
         {
             "name": "nette/application",
@@ -1571,6 +1621,7 @@
         "jasir/component-tree-panel": 20,
         "nextras/forms": 20,
         "leonardoca/tools": 20,
+        "leonardoca/nbootstrap": 20,
         "nette/tester": 20
     },
     "prefer-stable": false,

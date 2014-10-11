@@ -22,7 +22,8 @@
 		"dibi/dibi": "@dev",
 		"jasir/component-tree-panel": "@dev",
 		"nextras/forms": "@dev",
-		"leonardoca/tools": "@dev"
+		"leonardoca/tools": "@dev",
+		"leonardoca/nbootstrap": "@dev"
 	},
 	"require-dev": {
 		"nette/tester": "@dev"
