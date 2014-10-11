@@ -109,11 +109,11 @@ module.exports = function (grunt) {
 		},
 		bump: {
 			options: {
-				files: ['package.json', 'bower.json'],
-				updateConfigs: ['pkg', 'bower'],
+				files: ['package.json', 'bower.json', 'app/config/config.neon'],
+				updateConfigs: ['pkg'],
 				commit: true,
 				commitMessage: 'Release v%VERSION%',
-				commitFiles: ['package.json', 'bower.json'],
+				commitFiles: ['package.json', 'bower.json', 'app/config/config.neon'],
 				createTag: true,
 				tagName: 'v%VERSION%',
 				tagMessage: 'Version %VERSION%',
