@@ -22,6 +22,10 @@
 		<link rel="stylesheet" href="{$basePath}/bower_components/datatables/media/css/jquery.dataTables.css" />
 		<link rel="stylesheet" href="{$basePath}/bower_components/datatables-bootstrap3/BS3/assets/css/datatables.css" />
 		<!-- endbower -->
+		<link rel="stylesheet"
+			  href="{$basePath}/bower_components/codemirror/theme/pastel-on-dark.css"/>
+		<link rel="stylesheet"
+			  href="{$basePath}/bower_components/codemirror/addon/display/fullscreen.css"/>
 		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
 		<!-- endbuild -->
 	{/if}
@@ -88,6 +92,8 @@
 			<!-- endbower -->
 			<script src="{$basePath}/js/sortableReplicator.ajax.js"></script>
 			<script src="{$basePath}/js/main.js"></script>
+			{block js}
+			{/block}
 			<!-- endbuild -->
 		{/if}
 	{/block}
