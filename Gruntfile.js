@@ -123,6 +123,11 @@ module.exports = function (grunt) {
 				globalReplace: false
 			}
 		},
+		changelog: {
+			options: {
+				repository: 'https://github.com/LeonardoCA/nplayground'
+			}
+		},
 		notify: {
 			default: {
 				options: {
@@ -149,6 +154,12 @@ module.exports = function (grunt) {
 		'cssmin:generated',
 		'copy:server',
 		'notify:default'
+	]);
+
+	grunt.registerTask('release', [
+		'bump-only',
+		'changelog',
+		'bump-commit'
 	]);
 
 	grunt.registerTask('show-paths', [
