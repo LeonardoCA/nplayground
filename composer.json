@@ -1,7 +1,7 @@
 {
 	"name": "leonardoca/nplayground",
 	"description": "Sandbox for experiments in Nette Framework, including bootstrap from twitter and bower/grunt support",
-	"homepage": "https://bitbucket.org/leonardoca/netteplayground",
+	"homepage": "https://github.com/LeonardoCA/nplayground",
 	"type": "project",
 	"license": [
 		"BSD-3-Clause",
@@ -11,9 +11,13 @@
 	"authors": [
 		{
 			"name": "Leonard Odlozilik",
-			"homepage": "https://bitbucket.org/leonardoca/netteplayground"
+			"homepage": "https://github.com/LeonardoCA"
 		}
 	],
+	"support": {
+		"email": "leonard.odlozilik@gmail.com",
+		"issues": "https://github.com/LeonadoCA/nplayground/issues"
+	},
 	"require": {
 		"php": ">= 5.3.7",
 		"nette/nette": "@dev",
