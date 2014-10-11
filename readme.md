@@ -1,12 +1,11 @@
 Nette Playground based on Nette Sandbox
 =======================================
 
-Some experiments with nette\forms + Kdyby\Replicator + Bootstrap From Twitter
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-Nette Sandbox
-=============
+> Sandbox for experiments in Nette Framework, including bootstrap from twitter and bower/grunt support
 
-Sandbox is a pre-packaged and pre-configured Nette Framework application
+Nette Playground is a pre-packaged and pre-configured Nette Framework application
 that you can use as the skeleton for your new applications.
 
 [Nette](http://nette.org) is a popular tool for PHP web development.
@@ -20,8 +19,25 @@ Installing
 The best way to install Sandbox is using Composer. If you don't have Composer yet, download
 it following [the instructions](http://doc.nette.org/composer). Then use command:
 
-		composer create-project nette/sandbox my-app
-		cd my-app
+```sh
+$ composer create-project nette/sandbox my-app
+$ cd my-app
+```
+
+If you did not use [Bower](http://bower.io/) and [Grunt](http://gruntjs.com/) you need
+to install them globally first. Both depend on [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/).
+
+```sh
+$ npm install -g bower
+$ npm install -g grunt
+```
+
+To install bower dependencies and run grunt build scripts than run.
+
+```sh
+$ npm install
+$ grunt
+```
 
 Make directories `temp` and `log` writable. Navigate your browser
 to the `www` directory and you will see a welcome page. PHP 5.4 allows
@@ -37,4 +53,7 @@ License
 - Nette: New BSD License or GPL 2.0 or 3.0 (http://nette.org/license)
 - jQuery: MIT License (https://jquery.org/license)
 - Adminer: Apache License 2.0 or GPL 2 (http://www.adminer.org)
-- Sandbox: The Unlicense (http://unlicense.org)
+- Nette Playground: The Unlicense (http://unlicense.org)
+
+### Release History
+See the [CHANGELOG](CHANGELOG).
