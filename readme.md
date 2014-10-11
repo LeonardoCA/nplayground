@@ -20,7 +20,7 @@ The best way to install Sandbox is using Composer. If you don't have Composer ye
 it following [the instructions](http://doc.nette.org/composer). Then use command:
 
 ```sh
-$ composer create-project nette/sandbox my-app
+$ composer create-project leonardoca/nplayground my-app
 $ cd my-app
 ```
 

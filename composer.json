@@ -3,11 +3,7 @@
 	"description": "Sandbox for experiments in Nette Framework, including bootstrap from twitter and bower/grunt support",
 	"homepage": "https://github.com/LeonardoCA/nplayground",
 	"type": "project",
-	"license": [
-		"BSD-3-Clause",
-		"GPL-2.0",
-		"GPL-3.0"
-	],
+	"license": ["Unlicence"],
 	"authors": [
 		{
 			"name": "Leonard Odlozilik",
