@@ -1,45 +1,112 @@
+'use strict';
+
 module.exports = function (grunt) {
+
+	require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+
+	require('time-grunt')(grunt);
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		bower: {
-			install: {
-				options: {
-					targetDir: './www/assets',
-					layout: 'byComponent',
-					verbose: 'true',
-					install: true,
-					bowerOptions: {
-						forceLatest: true,
-						production: false
-					}
-				}
+		nette: {
+			temp: 'temp',
+			basePath: 'www'
+		},
+		//bower: {
+		//	install: {
+		//		options: {
+		//			targetDir: '<%= nette.basePath %>/assets',
+		//			layout: 'byType',
+		//			verbose: 'true',
+		//			install: false,
+		//			cleanTargetDir: false,
+		//			cleanBowerDir: false,
+		//			bowerOptions: {
+		//				forceLatest: true,
+		//				production: false
+		//			}
+		//		}
+		//	}
+		//},
+		wiredep: {
+			target: {
+				src: ['app/templates/**/*.latte'],
+				cwd: '.',
+				//bowerJson: '../bower.json',
+				//directory: 'bower_components',
+				dependencies: true,
+				devDependencies: false,
+				exclude: [],
+				fileTypes: {},
+				ignorePath: '',
+				overrides: {}
 			}
 		},
-		//nette_tester: {
-		//	options: {
-		//		bin: 'vendor/bin/tester',
-		//		jobs: 30,
-		//		quiet: false,
-		//		skipped: true
-		//	},
-		//	src: ['vendor/nette/tester/tests']
-		//},
-		//netteBasePath: {
-		//	basePath: 'www',
-		//	options: {
-		//		removeFromPath: ['app/templates/']
-		//	}
-		//},
-		//uglify: {
-		//	options: {
-		//		banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-		//	},
-		//	build: {
-		//		src: 'src/<%= pkg.name %>.js',
-		//		dest: 'build/<%= pkg.name %>.min.js'
-		//	}
-		//},
+		replace: {
+			server: {
+				options: {
+					patterns: [
+						{
+							match: /(\.\.\/)*www\//g,
+							replacement: '{$basePath}/'
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten: true,
+						src: ['app/templates/@layout.latte'],
+						dest: 'app/templates/'
+					}
+				]
+			}
+		},
+		useminPrepare: {
+			html: ['app/templates/@layout.latte'],
+			options: {
+				dest: '.',
+				staging: '<%= nette.temp %>'
+			}
+		},
+		usemin: {
+			html: ['<%= nette.basePath %>/{,*/}*.html'],
+			css: ['<%= nette.basePath %>/css/{,*/}*.css'],
+			options: {
+				dirs: ['<%= nette.basePath %>']
+			}
+		},
+		netteBasePath: {
+			basePath: '<%= nette.basePath %>',
+			options: {
+				removeFromPath: ['app/templates/', '../../www/']
+			}
+		},
+		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> v<%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+			}
+		},
+		nette_tester: {
+			options: {
+				bin: 'vendor/bin/tester',
+				jobs: 30,
+				quiet: false,
+				skipped: true
+			},
+			src: ['vendor/nette/tester/tests']
+		},
+		copy: {
+			server: {
+				files: [{
+					expand: true,
+					dot: true,
+					cwd: '<%= nette.basePath %>/bower_components/bootstrap/dist',
+					src: ['fonts/{,*/}*.*'],
+					dest: '<%= nette.basePath %>'
+				}]
+			}
+		},
 		bump: {
 			options: {
 				files: ['package.json', 'bower.json'],
@@ -51,50 +118,43 @@ module.exports = function (grunt) {
 				tagName: 'v%VERSION%',
 				tagMessage: 'Version %VERSION%',
 				push: true,
-				pushTo: 'upstream',
+				pushTo: 'origin',
 				gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
 				globalReplace: false
 			}
 		},
 		notify: {
-			//task_name: {
-			//	options: {
-			//		// Task-specific options go here.
-			//	}
-			//},
-			//watch: {
-			//	options: {
-			//		title: 'Task Complete',  // optional
-			//		message: 'SASS and Uglify finished running', //required
-			//	}
-			//},
 			default: {
 				options: {
-					message: 'Grunt job for <%= pkg.name %> finished!'
+					message: 'Build finished!'
 				}
 			},
 			bump: {
 				options: {
-					message: 'Released <%= pkg.name %> version <%= pkg.version %>'
-				}
-			},
-			bower: {
-				options: {
-					message: 'Bower installed all packages for <%= pkg.name %>'
+					message: 'Released v<%= pkg.version %>!'
 				}
 			}
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-bower-task');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-nette-tester');
-	grunt.loadNpmTasks('grunt-nette-basepath');
-	grunt.loadNpmTasks('grunt-notify');
-	grunt.loadNpmTasks('grunt-bump');
+	grunt.registerTask('default', [
+		//'bower',
+		'wiredep',
+		'replace:server',
+		'useminPrepare',
+		//'usemin',
+		'netteBasePath',
+		'concat:generated',
+		'uglify:generated',
+		'cssmin:generated',
+		'copy:server',
+		'notify:default'
+	]);
 
-	grunt.registerTask('default', ['notify:default']);
-	grunt.registerTask('bowerInstall', ['bower', 'notify:bower']);
+	grunt.registerTask('show-paths', [
+		'useminPrepare',
+		'usemin',
+		'netteBasePath'
+	]);
 
 };

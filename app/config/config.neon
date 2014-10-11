@@ -5,11 +5,11 @@
 # http://nette.org/security-warning
 #
 parameters:
-
+	appName: NPlayground
+	version: v0.0.2
 
 php:
 	date.timezone: Europe/Prague
-
 
 nette:
 	application:

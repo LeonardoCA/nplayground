@@ -1,34 +1,39 @@
 {
-  "name": "nette-playground",
-  "version": "0.0.2",
-  "authors": [
-    "Leonard Odlozilik <leonard.odlozilik@gmail.com>"
-  ],
-  "description": "Sandbox for testing nette functionality",
-  "main": "www/js/main.js",
-  "keywords": [
-    "nette", "bootstrap", "forms"
-  ],
-  "license": "BSD3",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "jquery-ui": "1.11.1",
-    "codemirror": "~4.6.0",
-    "bootstrap": "~3.2.0",
-    "nette.ajax.js": "~1.2.2",
-    "google-code-prettify": "~1.0.3",
-    "select2": "~3.5.1",
-    "select2-bootstrap3-css": "~1.4.1",
-    "bootstrap-toggle": "~1.1.0",
-    "datatables": "~1.10.2",
-    "datatables-bootstrap3": "*",
-    "nette-forms": "~2.2.2"
-  }
+	"name": "nplayground",
+	"version": "0.0.2",
+	"authors": [
+		"Leonard Odlozilik <leonard.odlozilik@gmail.com>"
+	],
+	"description": "Sandbox for experiments in Nette Framework, including bootstrap from twitter and bower/grunt support",
+	"main": "www/js/main.js",
+	"keywords": [
+		"nette",
+		"bootstrap",
+		"forms"
+	],
+	"license": [
+		"BSD-3-Clause",
+		"GPL-2.0",
+		"GPL-3.0"
+	],
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"tests"
+	],
+	"dependencies": {
+		"jquery-ui": "1.11.1",
+		"codemirror": "~4.6.0",
+		"bootstrap": "~3.2.0",
+		"nette.ajax.js": "master",
+		"google-code-prettify": "~1.0.3",
+		"bootstrap-toggle": "~1.1.0",
+		"datatables": "~1.10.2",
+		"datatables-bootstrap3": "*",
+		"nette-forms": "~2.2.2"
+	},
+	"resolutions": {
+		"datatables": "~1.10.2"
+	}
 }

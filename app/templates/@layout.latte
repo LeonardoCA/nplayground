@@ -9,20 +9,31 @@
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta charset="utf-8">
-	<title>{ifset #title}{include title|striptags} | {/ifset}Nette Playground</title>
-	<link rel="stylesheet" href="{$basePath}/assets/bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="{$basePath}/assets/google-code-prettify/prettify.min.css">
-	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+	<title>{$presenter->context->parameters['appName']} | {ifset #title}{include title|striptags}{/ifset}</title>
+	{if Tracy\Debugger::$productionMode}
+		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.min.css?{$presenter->context->parameters['version']}">
+	{else}
+		<!-- build:css {$basePath}/css/screen.min.css -->
+		<!-- bower:css -->
+		<link rel="stylesheet" href="{$basePath}/bower_components/codemirror/lib/codemirror.css" />
+		<link rel="stylesheet" href="{$basePath}/bower_components/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="{$basePath}/bower_components/google-code-prettify/bin/prettify.min.css" />
+		<link rel="stylesheet" href="{$basePath}/bower_components/bootstrap-toggle/css/bootstrap-toggle.css" />
+		<link rel="stylesheet" href="{$basePath}/bower_components/datatables/media/css/jquery.dataTables.css" />
+		<link rel="stylesheet" href="{$basePath}/bower_components/datatables-bootstrap3/BS3/assets/css/datatables.css" />
+		<!-- endbower -->
+		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+		<!-- endbuild -->
+	{/if}
 	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
-	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
-	<script src="{$basePath}/assets/google-code-prettify/prettify.min.js"></script>
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico?{$presenter->context->parameters['version']}">
 	{!prettyPrintStyle()}
 	{block head}{/block}
 </head>
 <body>
 	<script> document.documentElement.className+=' js' </script>
 
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default navbar-inverse" role="navigation">
 	  <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -32,20 +43,18 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-		  <a class="navbar-brand" href="/">Nette playground</a>
+		  <a class="navbar-brand" href="/">{$presenter->context->parameters['appName']}</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  <ul class="nav navbar-nav">
-			<li class="active"><a href="/"><span class="glyphicon glyphicon-wrench"></span> Forms</a></li>
+			<li class="active"><a href="/"><span class="glyphicon glyphicon-list-alt"></span> Replicator</a></li>
 		  </ul>
 		  <ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Info <span class="caret"></span></a>
 			  <ul class="dropdown-menu" role="menu">
-				<li><a href="#">Help</a></li>
-				<li class="divider"></li>
 				<li><a href="#">About</a></li>
 			  </ul>
 			</li>
@@ -61,13 +70,26 @@
 	</div>
 
 	{block scripts}
-	<script src="{$basePath}/assets/jquery/jquery.js"></script>
-	<script src="{$basePath}/assets/jquery-ui/jquery-ui.js"></script>
-    <script src="{$basePath}/assets/bootstrap/bootstrap.js"></script>
-	<script src="{$basePath}/assets/nette-forms/netteForms.js"></script>
-	<script src="{$basePath}/assets/nette.ajax.js/nette.ajax.js"></script>
-	<script src="{$basePath}/js/sortableReplicator.ajax.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
+		{if Tracy\Debugger::$productionMode}
+			<script src="{$basePath}/js/app.min.js?{$presenter->context->parameters['version']}"></script>
+		{else}
+			<!-- build:js {$basePath}/js/app.min.js -->
+			<!-- bower:js -->
+			<script src="{$basePath}/bower_components/jquery/dist/jquery.js"></script>
+			<script src="{$basePath}/bower_components/jquery-ui/jquery-ui.js"></script>
+			<script src="{$basePath}/bower_components/codemirror/lib/codemirror.js"></script>
+			<script src="{$basePath}/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+			<script src="{$basePath}/bower_components/nette-forms/src/assets/netteForms.js"></script>
+			<script src="{$basePath}/bower_components/nette.ajax.js/nette.ajax.js"></script>
+			<script src="{$basePath}/bower_components/google-code-prettify/bin/prettify.min.js"></script>
+			<script src="{$basePath}/bower_components/bootstrap-toggle/js/bootstrap-toggle.js"></script>
+			<script src="{$basePath}/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+			<script src="{$basePath}/bower_components/datatables-bootstrap3/BS3/assets/js/datatables.js"></script>
+			<!-- endbower -->
+			<script src="{$basePath}/js/sortableReplicator.ajax.js"></script>
+			<script src="{$basePath}/js/main.js"></script>
+			<!-- endbuild -->
+		{/if}
 	{/block}
 </body>
 </html>

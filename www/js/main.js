@@ -1,3 +1,4 @@
 $(function () {
 	$.nette.init();
+	prettyPrint();
 });

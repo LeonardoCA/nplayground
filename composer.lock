@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bee88e17b6a04b54031b6504027ad3cc",
+    "hash": "6bfafd3911a239b76c0a163e09a53b67",
     "packages": [
         {
             "name": "dg/adminer-custom",
@@ -129,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kdyby/Replicator.git",
-                "reference": "7ead4e37d3b1024160105c1af54eaca6aad3b73e"
+                "reference": "9e799d34291d6726832f50b56acf80b4022d1e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kdyby/Replicator/zipball/7ead4e37d3b1024160105c1af54eaca6aad3b73e",
-                "reference": "7ead4e37d3b1024160105c1af54eaca6aad3b73e",
+                "url": "https://api.github.com/repos/Kdyby/Replicator/zipball/9e799d34291d6726832f50b56acf80b4022d1e38",
+                "reference": "9e799d34291d6726832f50b56acf80b4022d1e38",
                 "shasum": ""
             },
             "require": {
@@ -148,6 +148,7 @@
                 "nette/caching": "~2.2@dev",
                 "nette/component-model": "~2.2@dev",
                 "nette/database": "~2.2@dev",
+                "nette/deprecated": "~2.2@dev",
                 "nette/di": "~2.2@dev",
                 "nette/finder": "~2.2@dev",
                 "nette/forms": "~2.2@dev",
@@ -198,7 +199,7 @@
                 "nette",
                 "replicator"
             ],
-            "time": "2014-07-27 16:11:36"
+            "time": "2014-09-30 10:22:11"
         },
         {
             "name": "latte/latte",
@@ -261,12 +262,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeonardoCA/Tools.git",
-                "reference": "0629091834977772d98632a6bf772b73b6b06ce9"
+                "reference": "6c014bd3bbed84273994b3d53ca3939e5c9e0abf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeonardoCA/Tools/zipball/0629091834977772d98632a6bf772b73b6b06ce9",
-                "reference": "0629091834977772d98632a6bf772b73b6b06ce9",
+                "url": "https://api.github.com/repos/LeonardoCA/Tools/zipball/6c014bd3bbed84273994b3d53ca3939e5c9e0abf",
+                "reference": "6c014bd3bbed84273994b3d53ca3939e5c9e0abf",
                 "shasum": ""
             },
             "require": {
@@ -275,6 +276,9 @@
             },
             "require-dev": {
                 "nette/tester": "~1.2.0"
+            },
+            "suggest": {
+                "ext-tidy": "LeonardoCA\\Tools suggests to install ext-tidy"
             },
             "type": "library",
             "autoload": {
@@ -302,7 +306,7 @@
                 "nette",
                 "tools"
             ],
-            "time": "2014-09-24 19:19:30"
+            "time": "2014-09-26 21:49:46"
         },
         {
             "name": "nette/application",
@@ -1390,12 +1394,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextras/forms.git",
-                "reference": "7120f43fb713012230d31cd1bdc987bcf9a54ee8"
+                "reference": "db4facd7d76bef24984f415baac3f079326d765d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextras/forms/zipball/7120f43fb713012230d31cd1bdc987bcf9a54ee8",
-                "reference": "7120f43fb713012230d31cd1bdc987bcf9a54ee8",
+                "url": "https://api.github.com/repos/nextras/forms/zipball/db4facd7d76bef24984f415baac3f079326d765d",
+                "reference": "db4facd7d76bef24984f415baac3f079326d765d",
                 "shasum": ""
             },
             "require": {
@@ -1441,7 +1445,7 @@
                 "form",
                 "nette"
             ],
-            "time": "2014-08-09 07:52:15"
+            "time": "2014-09-27 21:59:24"
         },
         {
             "name": "tracy/tracy",
@@ -1505,12 +1509,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "69b5bacfd31e079efecc856ff84ef4804f6be76a"
+                "reference": "73e9511cb0bd03efdba398c00e91fac8b22edde7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/69b5bacfd31e079efecc856ff84ef4804f6be76a",
-                "reference": "69b5bacfd31e079efecc856ff84ef4804f6be76a",
+                "url": "https://api.github.com/repos/nette/tester/zipball/73e9511cb0bd03efdba398c00e91fac8b22edde7",
+                "reference": "73e9511cb0bd03efdba398c00e91fac8b22edde7",
                 "shasum": ""
             },
             "require": {
@@ -1522,7 +1526,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -1553,7 +1557,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2014-09-23 11:02:08"
+            "time": "2014-09-27 10:42:19"
         }
     ],
     "aliases": [

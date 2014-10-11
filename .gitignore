@@ -1,13 +1,16 @@
 log/*
 temp/*
 vendor/*
-bower_components/*
-node_modules/*
-www/assets/*
 !vendor/others
+node_modules/*
+www/bower_components/*
+www/fonts/*
 
 .DS_Store
 !.gitignore
 !.htaccess
 !web.config
 app/config/config.local.neon
+
+www/js/app.min.js
+www/css/screen.min.css
