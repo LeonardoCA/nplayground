@@ -115,7 +115,7 @@ module.exports = function (grunt) {
 				updateConfigs: ['pkg'],
 				commit: true,
 				commitMessage: 'chore: Release v%VERSION%',
-				commitFiles: ['package.json', 'bower.json', 'app/config/config.neon'],
+				commitFiles: ['package.json', 'bower.json', 'app/config/config.neon', 'CHANGELOG.md'],
 				createTag: true,
 				tagName: 'v%VERSION%',
 				tagMessage: 'Version %VERSION%',
