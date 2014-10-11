@@ -12,22 +12,24 @@ module.exports = function (grunt) {
 			temp: 'temp',
 			basePath: 'www'
 		},
-		//bower: {
-		//	install: {
-		//		options: {
-		//			targetDir: '<%= nette.basePath %>/assets',
-		//			layout: 'byType',
-		//			verbose: 'true',
-		//			install: false,
-		//			cleanTargetDir: false,
-		//			cleanBowerDir: false,
-		//			bowerOptions: {
-		//				forceLatest: true,
-		//				production: false
-		//			}
-		//		}
-		//	}
-		//},
+		bower: {
+			install: {
+				options: {
+					//bowerDir: 'www/bower_components',
+					targetDir: 'www/assets',
+					layout: 'byType',
+					verbose: true,
+					install: true,
+					copy: false,
+					cleanTargetDir: true,
+					cleanBowerDir: false,
+					bowerOptions: {
+						forceLatest: true,
+						production: false
+					}
+				}
+			}
+		},
 		wiredep: {
 			target: {
 				src: ['app/templates/**/*.latte'],
@@ -112,12 +114,12 @@ module.exports = function (grunt) {
 				files: ['package.json', 'bower.json', 'app/config/config.neon'],
 				updateConfigs: ['pkg'],
 				commit: true,
-				commitMessage: 'Release v%VERSION%',
+				commitMessage: 'chore: Release v%VERSION%',
 				commitFiles: ['package.json', 'bower.json', 'app/config/config.neon'],
 				createTag: true,
 				tagName: 'v%VERSION%',
 				tagMessage: 'Version %VERSION%',
-				push: true,
+				push: false,
 				pushTo: 'origin',
 				gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
 				globalReplace: false
@@ -125,7 +127,7 @@ module.exports = function (grunt) {
 		},
 		changelog: {
 			options: {
-				repository: 'https://github.com/LeonardoCA/nplayground'
+				//editor: 'sublime -w'
 			}
 		},
 		notify: {
@@ -143,7 +145,7 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('default', [
-		//'bower',
+		'bower',
 		'wiredep',
 		'replace:server',
 		'useminPrepare',
