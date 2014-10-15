@@ -102,6 +102,7 @@ class NestedSortableReplicators extends Control
 
 		$form->onSuccess[] = $this->processForm;
 		$form->setRenderer(new Bs3FormRenderer);
+		//sdump($form);
 		return $form;
 	}
 
@@ -112,9 +113,9 @@ class NestedSortableReplicators extends Control
 		foreach ($container->getControls() as $control) {
 			if ($control instanceof Controls\Button) {
 				if ($control->getName() == 'submit') {
-					$class = 'btn btn-primary';
+					$class = 'btn btn-primary ajax';
 				} else {
-					$class = 'btn btn-default';
+					$class = 'btn btn-default ajax';
 				}
 				$control->getControlPrototype()->addClass($class);
 
@@ -139,6 +140,7 @@ class NestedSortableReplicators extends Control
 
 	public function processForm(Form $form, $values)
 	{
+		$form->parent->invalidateControl('replicator-snippet');
 	}
 
 
@@ -153,6 +155,7 @@ class NestedSortableReplicators extends Control
 		Replicator\Container $replicator, IContainer $item
 	) {
 		//$this->flashMessage('Form add');
+		$replicator->form->parent->invalidateControl();
 	}
 
 
@@ -167,6 +170,7 @@ class NestedSortableReplicators extends Control
 		Replicator\Container $replicator, IContainer $item
 	) {
 		//$this->flashMessage('Form remove');
+		$replicator->form->parent->invalidateControl();
 	}
 
 }
