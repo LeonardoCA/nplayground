@@ -67,7 +67,7 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 
-	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+	{snippet flashMessages}{control flashMessages}{/snippet}
 
 	<div class="container-fluid">
 		{include content}

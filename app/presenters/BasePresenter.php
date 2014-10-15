@@ -2,6 +2,7 @@
 
 namespace App\Presenters;
 
+use LeonardoCA\Bootstrap\Components\FlashMessagesControl;
 use Nette,
 	App\Model;
 
@@ -11,5 +12,23 @@ use Nette,
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
+
+	protected function beforeRender()
+	{
+		parent::beforeRender();
+		if ($this->isAjax) {
+			$this->redrawControl('flashMessages');
+		}
+	}
+
+	/**
+	 * Flash messages component
+	 *
+	 * @returns FlashMessagesControl
+	 */
+	public function createComponentFlashMessages()
+	{
+		return new FlashMessagesControl;
+	}
 
 }

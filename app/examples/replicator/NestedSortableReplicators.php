@@ -141,6 +141,7 @@ class NestedSortableReplicators extends Control
 	public function processForm(Form $form, $values)
 	{
 		$form->parent->invalidateControl('replicator-snippet');
+		$this->presenter->flashMessage('Saving not implemented.');
 	}
 
 
@@ -154,7 +155,6 @@ class NestedSortableReplicators extends Control
 	public function handleAddItem(
 		Replicator\Container $replicator, IContainer $item
 	) {
-		//$this->flashMessage('Form add');
 		$replicator->form->parent->invalidateControl();
 	}
 
@@ -169,7 +169,6 @@ class NestedSortableReplicators extends Control
 	public function handleRemoveItem(
 		Replicator\Container $replicator, IContainer $item
 	) {
-		//$this->flashMessage('Form remove');
 		$replicator->form->parent->invalidateControl();
 	}
 
