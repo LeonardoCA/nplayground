@@ -23,10 +23,22 @@ nette:
 	debugger:
 		maxDepth: 3
 
+	database:
+		default:
+			dsn: 'mysql:host=localhost;dbname=nplayground'
+			user: 'nplayground'
+			password: 'test1598!'
+			options:    [PDO::MYSQL_ATTR_COMPRESS = true]
+			debugger:   true        # panel v debugger baru
+			explain:    true        # explain dotazů v debugger bar
+			reflection: discovered  # nebo conventional nebo classname, výchozí je discovered
+			autowired:  true
+
 services:
 	- App\Model\UserManager
 	- App\RouterFactory
 	router: @App\RouterFactory::createRouter
+	database: @nette.database.default
 
 extensions:
 	formsReplicator: Kdyby\Replicator\DI\ReplicatorExtension
