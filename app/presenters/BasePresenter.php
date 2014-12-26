@@ -3,8 +3,7 @@
 namespace App\Presenters;
 
 use LeonardoCA\Bootstrap\Components\FlashMessagesControl;
-use Nette,
-	App\Model;
+use Nette;
 
 
 /**

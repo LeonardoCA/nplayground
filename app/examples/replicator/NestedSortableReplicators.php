@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of nette-test
+ * This file is part of NPlayground
  * Copyright (c) 2014 Leonardoca
  * For the full copyright and license information
  * please view the file license.txt that was distributed with this source code.
@@ -23,12 +23,6 @@ class NestedSortableReplicators extends Control
 
 	/** @var callable[] */
 	public $onRender = [];
-
-
-
-	public function __construct()
-	{
-	}
 
 
 
@@ -102,7 +96,6 @@ class NestedSortableReplicators extends Control
 
 		$form->onSuccess[] = $this->processForm;
 		$form->setRenderer(new Bs3FormRenderer);
-		//sdump($form);
 		return $form;
 	}
 
@@ -140,7 +133,7 @@ class NestedSortableReplicators extends Control
 
 	public function processForm(Form $form, $values)
 	{
-		$form->parent->invalidateControl('replicator-snippet');
+		$form->parent->redrawControl('replicator-snippet');
 		$this->presenter->flashMessage('Saving not implemented.');
 	}
 
@@ -155,7 +148,7 @@ class NestedSortableReplicators extends Control
 	public function handleAddItem(
 		Replicator\Container $replicator, IContainer $item
 	) {
-		$replicator->form->parent->invalidateControl();
+		$replicator->form->parent->redrawControl();
 	}
 
 
@@ -169,7 +162,14 @@ class NestedSortableReplicators extends Control
 	public function handleRemoveItem(
 		Replicator\Container $replicator, IContainer $item
 	) {
-		$replicator->form->parent->invalidateControl();
+		$replicator->form->parent->redrawControl();
+	}
+
+
+
+	public  function  handleTest()
+	{
+		$this->presenter->flashMessage('Test Flash message', 'alert-warning');
 	}
 
 }

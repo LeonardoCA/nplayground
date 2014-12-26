@@ -16,12 +16,20 @@ nette:
 		errorPresenter: Error
 		mapping:
 			*: App\*Module\Presenters\*Presenter
-
+		debugger: true
+		catchExceptions: yes
+	container:
+		debugger: true
+	routing:
+		debugger: true
 	session:
 		expiration: 14 days
-
 	debugger:
 		maxDepth: 3
+		email: 'leonard.odlozilik@gmail.com'
+		strictMode: true
+		editor: 'editor://open/?file=%file&line=%line&project=nplayground'
+		bar:
 
 	database:
 		default:
@@ -29,8 +37,8 @@ nette:
 			user: 'nplayground'
 			password: 'test1598!'
 			options:    [PDO::MYSQL_ATTR_COMPRESS = true]
-			debugger:   true        # panel v debugger baru
-			explain:    true        # explain dotazů v debugger bar
+			debugger:   true
+			explain:    true
 			reflection: discovered  # nebo conventional nebo classname, výchozí je discovered
 			autowired:  true
 
@@ -43,6 +51,7 @@ services:
 extensions:
 	formsReplicator: Kdyby\Replicator\DI\ReplicatorExtension
 	smartDump: LeonardoCA\Tools\DI\SmartDumpExtension
+	ajaxPanels: LeonardoCA\Tools\DI\AjaxPanelsCompilerExtension
 
 smartDump:
 	traceMode: false  #false|number|all

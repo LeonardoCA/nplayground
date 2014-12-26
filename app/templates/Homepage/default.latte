@@ -20,6 +20,9 @@
 						{!$renderedComponentHtml}
 					</div>
 				</div>
+				<div class="well">
+					<a class="btn btn-danger ajax" href="BadLink" data-toggle="tooltip" data-placement="right" title="Check AJAX Panel">Test Bad Link Ajax</a>
+				</div>
 			</div>
 			<div class="col-lg-7">
 				{var $testFormValues = array_key_exists('form', $_presenter->componentData) ? $_presenter->componentData['form']->getValues() : null}

@@ -31,12 +31,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/dibi.git",
-                "reference": "cde5af7cbe02d231fe2d3f904fc2c3d3eeda66f0"
+                "reference": "f534c15f0e96336952f0c400035d6efddb107e8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/dibi/zipball/cde5af7cbe02d231fe2d3f904fc2c3d3eeda66f0",
-                "reference": "cde5af7cbe02d231fe2d3f904fc2c3d3eeda66f0",
+                "url": "https://api.github.com/repos/dg/dibi/zipball/f534c15f0e96336952f0c400035d6efddb107e8d",
+                "reference": "f534c15f0e96336952f0c400035d6efddb107e8d",
                 "shasum": ""
             },
             "require": {
@@ -86,7 +86,7 @@
                 "postgresql",
                 "sqlite"
             ],
-            "time": "2014-07-16 15:46:08"
+            "time": "2014-11-04 22:47:23"
         },
         {
             "name": "jasir/component-tree-panel",
@@ -129,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kdyby/Replicator.git",
-                "reference": "9e799d34291d6726832f50b56acf80b4022d1e38"
+                "reference": "d10ec08a02bd5016690d69bd26e6d1cee59c291b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kdyby/Replicator/zipball/9e799d34291d6726832f50b56acf80b4022d1e38",
-                "reference": "9e799d34291d6726832f50b56acf80b4022d1e38",
+                "url": "https://api.github.com/repos/Kdyby/Replicator/zipball/d10ec08a02bd5016690d69bd26e6d1cee59c291b",
+                "reference": "d10ec08a02bd5016690d69bd26e6d1cee59c291b",
                 "shasum": ""
             },
             "require": {
@@ -199,20 +199,20 @@
                 "nette",
                 "replicator"
             ],
-            "time": "2014-09-30 10:22:11"
+            "time": "2014-12-05 18:57:19"
         },
         {
             "name": "latte/latte",
-            "version": "v2.2.3",
+            "version": "v2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/latte.git",
-                "reference": "1dafccb60dd084d7a71c3d9a607ba9782b6e6061"
+                "reference": "4cd32219518ad02c7092e4ab02fbf140462d909c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/latte/zipball/1dafccb60dd084d7a71c3d9a607ba9782b6e6061",
-                "reference": "1dafccb60dd084d7a71c3d9a607ba9782b6e6061",
+                "url": "https://api.github.com/repos/nette/latte/zipball/4cd32219518ad02c7092e4ab02fbf140462d909c",
+                "reference": "4cd32219518ad02c7092e4ab02fbf140462d909c",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
                 "templating",
                 "twig"
             ],
-            "time": "2014-08-24 18:26:48"
+            "time": "2014-11-08 16:27:57"
         },
         {
             "name": "leonardoca/nbootstrap",
@@ -312,12 +312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/LeonardoCA/Tools.git",
-                "reference": "95713cb59e72e7f1decfb856ba8832ab6112f992"
+                "reference": "ef19f5ff568c7214b8a0109071c09623693a2317"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LeonardoCA/Tools/zipball/95713cb59e72e7f1decfb856ba8832ab6112f992",
-                "reference": "95713cb59e72e7f1decfb856ba8832ab6112f992",
+                "url": "https://api.github.com/repos/LeonardoCA/Tools/zipball/ef19f5ff568c7214b8a0109071c09623693a2317",
+                "reference": "ef19f5ff568c7214b8a0109071c09623693a2317",
                 "shasum": ""
             },
             "require": {
@@ -356,20 +356,20 @@
                 "nette",
                 "tools"
             ],
-            "time": "2014-10-11 15:48:55"
+            "time": "2014-12-26 13:20:58"
         },
         {
             "name": "nette/application",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/application.git",
-                "reference": "f31467112ad4de3187bb8978e7c2d49e808b991f"
+                "reference": "0c5280fa75bd237afd179b50961cee2de8e8e32a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/application/zipball/f31467112ad4de3187bb8978e7c2d49e808b991f",
-                "reference": "f31467112ad4de3187bb8978e7c2d49e808b991f",
+                "url": "https://api.github.com/repos/nette/application/zipball/0c5280fa75bd237afd179b50961cee2de8e8e32a",
+                "reference": "0c5280fa75bd237afd179b50961cee2de8e8e32a",
                 "shasum": ""
             },
             "require": {
@@ -386,7 +386,8 @@
             },
             "require-dev": {
                 "latte/latte": "~2.2.2",
-                "nette/tester": "~1.0"
+                "nette/forms": "~2.2",
+                "nette/tester": "~1.3"
             },
             "suggest": {
                 "nette/forms": "Allows to use Nette\\Application\\UI\\Form"
@@ -415,20 +416,20 @@
             ],
             "description": "Nette Application MVC Component",
             "homepage": "http://nette.org",
-            "time": "2014-08-24 18:03:01"
+            "time": "2014-11-05 01:37:42"
         },
         {
             "name": "nette/bootstrap",
-            "version": "v2.2.2",
+            "version": "v2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "0176eef087fe57ed0c788a85651f76f1aff21f1e"
+                "reference": "76177e115ab947b8375e852c738520e34c6ae532"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/0176eef087fe57ed0c788a85651f76f1aff21f1e",
-                "reference": "0176eef087fe57ed0c788a85651f76f1aff21f1e",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/76177e115ab947b8375e852c738520e34c6ae532",
+                "reference": "76177e115ab947b8375e852c738520e34c6ae532",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +449,7 @@
                 "nette/robot-loader": "~2.2",
                 "nette/safe-stream": "~2.2",
                 "nette/security": "~2.2",
-                "nette/tester": "~1.0"
+                "nette/tester": "~1.3"
             },
             "suggest": {
                 "nette/robot-loader": "to use Configurator::createRobotLoader()"
@@ -477,20 +478,20 @@
             ],
             "description": "Nette Bootstrap",
             "homepage": "http://nette.org",
-            "time": "2014-08-27 21:03:42"
+            "time": "2014-11-15 19:32:31"
         },
         {
             "name": "nette/caching",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/caching.git",
-                "reference": "0dcff13fced329d78e14679d8b6d00fd0babd0f1"
+                "reference": "56ec8daeebbd780316a94759fc8a5a861adfa579"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/caching/zipball/0dcff13fced329d78e14679d8b6d00fd0babd0f1",
-                "reference": "0dcff13fced329d78e14679d8b6d00fd0babd0f1",
+                "url": "https://api.github.com/repos/nette/caching/zipball/56ec8daeebbd780316a94759fc8a5a861adfa579",
+                "reference": "56ec8daeebbd780316a94759fc8a5a861adfa579",
                 "shasum": ""
             },
             "require": {
@@ -529,7 +530,7 @@
             ],
             "description": "Nette Caching Component",
             "homepage": "http://nette.org",
-            "time": "2014-06-24 11:38:03"
+            "time": "2014-10-15 20:28:19"
         },
         {
             "name": "nette/component-model",
@@ -583,16 +584,16 @@
         },
         {
             "name": "nette/database",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/database.git",
-                "reference": "5b7bf41ba57f1f809823555e4630030f4ebc2a05"
+                "reference": "f0daef50a64dcc401652127f972e6aa94d138760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/database/zipball/5b7bf41ba57f1f809823555e4630030f4ebc2a05",
-                "reference": "5b7bf41ba57f1f809823555e4630030f4ebc2a05",
+                "url": "https://api.github.com/repos/nette/database/zipball/f0daef50a64dcc401652127f972e6aa94d138760",
+                "reference": "f0daef50a64dcc401652127f972e6aa94d138760",
                 "shasum": ""
             },
             "require": {
@@ -631,7 +632,7 @@
             ],
             "description": "Nette Database Component",
             "homepage": "http://nette.org",
-            "time": "2014-08-24 22:56:02"
+            "time": "2014-11-08 16:06:46"
         },
         {
             "name": "nette/deprecated",
@@ -690,16 +691,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "680c7da614fc69396216694ba7dfd8e8f007cd73"
+                "reference": "236f386f3f6fdf944e2eaa4bfe61e034319f4f74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/680c7da614fc69396216694ba7dfd8e8f007cd73",
-                "reference": "680c7da614fc69396216694ba7dfd8e8f007cd73",
+                "url": "https://api.github.com/repos/nette/di/zipball/236f386f3f6fdf944e2eaa4bfe61e034319f4f74",
+                "reference": "236f386f3f6fdf944e2eaa4bfe61e034319f4f74",
                 "shasum": ""
             },
             "require": {
@@ -713,7 +714,7 @@
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "~1.0"
+                "nette/tester": "~1.3"
             },
             "type": "library",
             "autoload": {
@@ -739,7 +740,7 @@
             ],
             "description": "Nette Dependency Injection Component",
             "homepage": "http://nette.org",
-            "time": "2014-08-27 22:22:10"
+            "time": "2014-11-08 17:50:39"
         },
         {
             "name": "nette/finder",
@@ -793,16 +794,16 @@
         },
         {
             "name": "nette/forms",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/forms.git",
-                "reference": "eea9e8129c2890de36c1ba5f06bd5e3989faaad6"
+                "reference": "6c9ae32c716c73177764809d5e59e03e9cd0ba16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/forms/zipball/eea9e8129c2890de36c1ba5f06bd5e3989faaad6",
-                "reference": "eea9e8129c2890de36c1ba5f06bd5e3989faaad6",
+                "url": "https://api.github.com/repos/nette/forms/zipball/6c9ae32c716c73177764809d5e59e03e9cd0ba16",
+                "reference": "6c9ae32c716c73177764809d5e59e03e9cd0ba16",
                 "shasum": ""
             },
             "require": {
@@ -843,20 +844,20 @@
             ],
             "description": "Nette Forms: greatly facilitates web forms",
             "homepage": "http://nette.org",
-            "time": "2014-08-28 11:13:40"
+            "time": "2014-11-05 02:01:07"
         },
         {
             "name": "nette/http",
-            "version": "v2.2.1",
+            "version": "v2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/http.git",
-                "reference": "81b8dcfcd623a94a53f826b9e6dc97c56d238125"
+                "reference": "e86342380c5e427f87000d7d104494fa336fbc12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/http/zipball/81b8dcfcd623a94a53f826b9e6dc97c56d238125",
-                "reference": "81b8dcfcd623a94a53f826b9e6dc97c56d238125",
+                "url": "https://api.github.com/repos/nette/http/zipball/e86342380c5e427f87000d7d104494fa336fbc12",
+                "reference": "e86342380c5e427f87000d7d104494fa336fbc12",
                 "shasum": ""
             },
             "require": {
@@ -896,20 +897,20 @@
             ],
             "description": "Nette HTTP Component",
             "homepage": "http://nette.org",
-            "time": "2014-08-24 12:26:46"
+            "time": "2014-11-16 13:45:55"
         },
         {
             "name": "nette/mail",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/mail.git",
-                "reference": "d75dd88cf295953c3a3e0c9a55b7fbb8eeae9eb1"
+                "reference": "7a2e7d8012a636bb4658aa01064792981fcdd2c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/mail/zipball/d75dd88cf295953c3a3e0c9a55b7fbb8eeae9eb1",
-                "reference": "d75dd88cf295953c3a3e0c9a55b7fbb8eeae9eb1",
+                "url": "https://api.github.com/repos/nette/mail/zipball/7a2e7d8012a636bb4658aa01064792981fcdd2c6",
+                "reference": "7a2e7d8012a636bb4658aa01064792981fcdd2c6",
                 "shasum": ""
             },
             "require": {
@@ -950,20 +951,20 @@
             ],
             "description": "Nette Mail: Sending E-mails",
             "homepage": "http://nette.org",
-            "time": "2014-08-24 12:28:28"
+            "time": "2014-10-15 20:45:25"
         },
         {
             "name": "nette/neon",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/neon.git",
-                "reference": "f7fa12cd5fc64a03723115596464bc0f7e4dc02c"
+                "reference": "3b28bcb3170df6db15c106cc0f7a821818b0d244"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/neon/zipball/f7fa12cd5fc64a03723115596464bc0f7e4dc02c",
-                "reference": "f7fa12cd5fc64a03723115596464bc0f7e4dc02c",
+                "url": "https://api.github.com/repos/nette/neon/zipball/3b28bcb3170df6db15c106cc0f7a821818b0d244",
+                "reference": "3b28bcb3170df6db15c106cc0f7a821818b0d244",
                 "shasum": ""
             },
             "require": {
@@ -997,7 +998,7 @@
             ],
             "description": "Nette NEON: parser & generator for Nette Object Notation",
             "homepage": "http://ne-on.org",
-            "time": "2014-08-27 21:32:24"
+            "time": "2014-11-08 15:36:11"
         },
         {
             "name": "nette/nette",
@@ -1005,12 +1006,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/nette.git",
-                "reference": "e23de7abbbff976bfeada12088f1cd740a61e8bd"
+                "reference": "d3a0af521cc5d09d4474ca51b9ba34ae910b83cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/nette/zipball/e23de7abbbff976bfeada12088f1cd740a61e8bd",
-                "reference": "e23de7abbbff976bfeada12088f1cd740a61e8bd",
+                "url": "https://api.github.com/repos/nette/nette/zipball/d3a0af521cc5d09d4474ca51b9ba34ae910b83cf",
+                "reference": "d3a0af521cc5d09d4474ca51b9ba34ae910b83cf",
                 "shasum": ""
             },
             "require": {
@@ -1037,7 +1038,7 @@
                 "tracy/tracy": ">=2.2.0"
             },
             "require-dev": {
-                "nette/tester": "~1.1"
+                "nette/tester": "~1.3"
             },
             "type": "library",
             "extra": {
@@ -1048,9 +1049,6 @@
             "autoload": {
                 "classmap": [
                     "Nette/"
-                ],
-                "files": [
-                    "Nette/loader.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1080,7 +1078,7 @@
                 "mvc",
                 "templating"
             ],
-            "time": "2014-08-26 14:24:50"
+            "time": "2014-12-22 03:37:31"
         },
         {
             "name": "nette/php-generator",
@@ -1134,16 +1132,16 @@
         },
         {
             "name": "nette/reflection",
-            "version": "v2.2.0",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/reflection.git",
-                "reference": "419708adda0e74e935381e887928c978881108f1"
+                "reference": "2ef632dd47e07040ee4f960070ed98fa1f59a68e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/reflection/zipball/419708adda0e74e935381e887928c978881108f1",
-                "reference": "419708adda0e74e935381e887928c978881108f1",
+                "url": "https://api.github.com/repos/nette/reflection/zipball/2ef632dd47e07040ee4f960070ed98fa1f59a68e",
+                "reference": "2ef632dd47e07040ee4f960070ed98fa1f59a68e",
                 "shasum": ""
             },
             "require": {
@@ -1182,7 +1180,7 @@
             ],
             "description": "Nette PHP Reflection Component",
             "homepage": "http://nette.org",
-            "time": "2014-06-24 11:09:56"
+            "time": "2014-11-15 18:55:43"
         },
         {
             "name": "nette/robot-loader",
@@ -1287,16 +1285,16 @@
         },
         {
             "name": "nette/security",
-            "version": "v2.2.0",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/security.git",
-                "reference": "fee7533d0b2a47f18648f0ca4b961a6551a8e3e2"
+                "reference": "9678d50769eba82a9e9621b19720152b14055b0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/security/zipball/fee7533d0b2a47f18648f0ca4b961a6551a8e3e2",
-                "reference": "fee7533d0b2a47f18648f0ca4b961a6551a8e3e2",
+                "url": "https://api.github.com/repos/nette/security/zipball/9678d50769eba82a9e9621b19720152b14055b0a",
+                "reference": "9678d50769eba82a9e9621b19720152b14055b0a",
                 "shasum": ""
             },
             "require": {
@@ -1333,7 +1331,7 @@
             ],
             "description": "Nette Security: Access Control Component",
             "homepage": "http://nette.org",
-            "time": "2014-06-24 11:08:00"
+            "time": "2014-12-14 17:53:13"
         },
         {
             "name": "nette/tokenizer",
@@ -1386,16 +1384,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "9166030811103af7101630bddc0bb1b91a7e36f7"
+                "reference": "09161a4a6311ead542ce1f925b976c6525028e66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/9166030811103af7101630bddc0bb1b91a7e36f7",
-                "reference": "9166030811103af7101630bddc0bb1b91a7e36f7",
+                "url": "https://api.github.com/repos/nette/utils/zipball/09161a4a6311ead542ce1f925b976c6525028e66",
+                "reference": "09161a4a6311ead542ce1f925b976c6525028e66",
                 "shasum": ""
             },
             "require": {
@@ -1436,7 +1434,7 @@
             ],
             "description": "Nette Utility Classes",
             "homepage": "http://nette.org",
-            "time": "2014-08-24 23:29:12"
+            "time": "2014-10-26 23:12:20"
         },
         {
             "name": "nextras/forms",
@@ -1499,16 +1497,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.2.3",
+            "version": "v2.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "97889d2b8cfb7607cc370ca0ddb97c6f5b43deb9"
+                "reference": "1a3c6c6f7cf3c4dd6b79a4b11152a1b6b78cc5ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/97889d2b8cfb7607cc370ca0ddb97c6f5b43deb9",
-                "reference": "97889d2b8cfb7607cc370ca0ddb97c6f5b43deb9",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/1a3c6c6f7cf3c4dd6b79a4b11152a1b6b78cc5ed",
+                "reference": "1a3c6c6f7cf3c4dd6b79a4b11152a1b6b78cc5ed",
                 "shasum": ""
             },
             "require": {
@@ -1549,7 +1547,7 @@
                 "debugger",
                 "nette"
             ],
-            "time": "2014-08-24 23:36:30"
+            "time": "2014-11-15 17:22:04"
         }
     ],
     "packages-dev": [
@@ -1559,12 +1557,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "73e9511cb0bd03efdba398c00e91fac8b22edde7"
+                "reference": "76153d57bd1175142e4fa800e8782a7449d11136"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/73e9511cb0bd03efdba398c00e91fac8b22edde7",
-                "reference": "73e9511cb0bd03efdba398c00e91fac8b22edde7",
+                "url": "https://api.github.com/repos/nette/tester/zipball/76153d57bd1175142e4fa800e8782a7449d11136",
+                "reference": "76153d57bd1175142e4fa800e8782a7449d11136",
                 "shasum": ""
             },
             "require": {
@@ -1607,12 +1605,10 @@
                 "testing",
                 "unit"
             ],
-            "time": "2014-09-27 10:42:19"
+            "time": "2014-12-18 12:08:52"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "nette/nette": 20,
@@ -1625,10 +1621,9 @@
         "nette/tester": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">= 5.3.7"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
