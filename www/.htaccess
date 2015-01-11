@@ -10,6 +10,10 @@
 	RewriteEngine On
 	# RewriteBase /
 
+	# Redirect always to https
+	RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 	# prevents files starting with dot to be viewed by browser
 	RewriteRule /\.|^\. - [F]
 
