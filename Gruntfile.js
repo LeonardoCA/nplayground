@@ -144,7 +144,7 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.registerTask('default', [
+	grunt.registerTask('build', [
 		'bower',
 		'wiredep',
 		'replace:server',
@@ -154,7 +154,11 @@ module.exports = function (grunt) {
 		'concat:generated',
 		'uglify:generated',
 		'cssmin:generated',
-		'copy:server',
+		'copy:server'
+	]);
+
+	grunt.registerTask('default', [
+		'build',
 		'notify:default'
 	]);
 

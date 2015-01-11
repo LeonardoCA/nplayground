@@ -1,13 +1,19 @@
+sudo: false
 language: php
-
 php:
   - 5.4
   - 5.5
   - 5.6
 
+before_install: npm install -g grunt-cli
+
+install: npm install
+
 before_script:
+  - grunt build
   - composer self-update
   - composer install --no-interaction --dev
+  - cp app/config/config.local.neon.example app/config/config.local.neon
 
 script: VERBOSE=true vendor/bin/tester tests/
 
@@ -19,3 +25,9 @@ deploy:
   deployment: nplayground/default
   on:
     repo: LeonardoCA/nplayground
+    branch: master
+    php: 5.6
+
+notifications:
+  email:
+    - leonard.odlozilik@gmail.com

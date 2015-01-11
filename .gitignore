@@ -6,6 +6,7 @@ node_modules/*
 www/bower_components/*
 www/fonts/*
 
+.dpl/*
 .DS_Store
 !.gitignore
 !.htaccess
