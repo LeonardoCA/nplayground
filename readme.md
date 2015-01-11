@@ -1,7 +1,9 @@
 Nette Playground based on Nette Sandbox
 =======================================
-
+[![Build Status](https://secure.travis-ci.org/LeonardoCA/nplayground.png)](https://travis-ci.org/LeonardoCA/nplayground.svg)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Latest stable](https://img.shields.io/packagist/v/LeonardoCA/nplayground.svg)](https://packagist.org/packages/LeonardoCA/nplayground)
+[![Latest stable](https://img.shields.io/packagist/l/LeonardoCA/nplayground.svg)](https://packagist.org/packages/LeonardoCA/nplayground)
 
 > Sandbox for experiments in Nette Framework, including bootstrap from twitter and bower/grunt support
 
