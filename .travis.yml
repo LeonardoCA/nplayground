@@ -4,6 +4,19 @@ php:
   - 5.4
   - 5.5
   - 5.6
+  - hhvm
+
+env:
+    - PHP_BIN=php
+    - PHP_BIN=php-cgi
+
+matrix:
+  fast_finish: true
+  allow_failures:
+     - php: hhvm
+  exclude:
+     - php: hhvm
+       env: PHP_BIN=php-cgi
 
 before_install: npm install -g grunt-cli
 
@@ -13,16 +26,23 @@ before_script:
   - grunt build
   - composer self-update
   - composer install --no-interaction --dev
-  - cp app/config/config.local.neon.example app/config/config.local.neon
+  #- composer create-project nette/code-checker code-checker ~2.3 --no-interaction --prefer-source
+  - cp ./app/config/config.local.neon.example ./app/config/config.local.neon
+  - mysql -e 'create database nplayground;'
 
-script: VERBOSE=true vendor/bin/tester tests/
+after_failure:
+    # Print *.actual content
+    - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
+
+script:
+    - vendor/bin/tester -p $PHP_BIN tests -s
 
 deploy:
   provider: cloudcontrol
   email: leonard.odlozilik@gmail.com
   password:
     secure: lA2KcFFpyTWWutrlNFuL+EEhgIS2qRFre1aE+MF3TOGGpjeb9IdHth3YKGp9m7tutwxv5eoJTLImZtnUTKAU3zav/b2h74iFNYWOZ4YMWwSwA1wYBSSG2fSwyOYnEmlJL7OZQvRo+6e3ByMIn+Yk9hMVJrW6T8WUhXqEz880Rk0=
-  deployment: nplayground/default
+  deployment: nplayground/master
   on:
     repo: LeonardoCA/nplayground
     branch: master
