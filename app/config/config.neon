@@ -51,7 +51,17 @@ extensions:
 	formsReplicator: Kdyby\Replicator\DI\ReplicatorExtension
 	smartDump: LeonardoCA\Tools\DI\SmartDumpExtension
 	ajaxPanels: LeonardoCA\Tools\DI\AjaxPanelsCompilerExtension
+	redis: Kdyby\Redis\DI\RedisExtension
+	console: Kdyby\Console\DI\ConsoleExtension
 
 smartDump:
 	traceMode: false  #false|number|all
 	showParams: false
+
+redis:
+    journal: on
+    storage: on
+    session: on
+
+console:
+    url: http://www.nplayground.l

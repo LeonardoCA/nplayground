@@ -1,53 +1,34 @@
-sudo: false
 language: php
 php:
   - 5.4
   - 5.5
   - 5.6
   - hhvm
-
-env:
-    - PHP_BIN=php
-    - PHP_BIN=php-cgi
-
 matrix:
   fast_finish: true
   allow_failures:
-     - php: hhvm
-  exclude:
-     - php: hhvm
-       env: PHP_BIN=php-cgi
-
+    - php: hhvm
 before_install: npm install -g grunt-cli
-
 install: npm install
-
 before_script:
   - grunt build
+  - ./.travis.redis.sh
   - composer self-update
   - composer install --no-interaction --dev
-  #- composer create-project nette/code-checker code-checker ~2.3 --no-interaction --prefer-source
   - cp ./app/config/config.local.neon.example ./app/config/config.local.neon
   - mysql -e 'create database nplayground;'
-
-after_failure:
-    # Print *.actual content
-    - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
-
 script:
-    - vendor/bin/tester -p $PHP_BIN tests -s
-
+  - vendor/bin/tester tests -s -p php -c tests/php.ini-unix
+after_failure:
+  - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
 deploy:
   provider: cloudcontrol
   email: leonard.odlozilik@gmail.com
   password:
-    secure: lA2KcFFpyTWWutrlNFuL+EEhgIS2qRFre1aE+MF3TOGGpjeb9IdHth3YKGp9m7tutwxv5eoJTLImZtnUTKAU3zav/b2h74iFNYWOZ4YMWwSwA1wYBSSG2fSwyOYnEmlJL7OZQvRo+6e3ByMIn+Yk9hMVJrW6T8WUhXqEz880Rk0=
+    secure: mvP3E1OsHFjbWsS8+bCK43KFfGWplZbDxGLELjoJWLX+4hpp00K04foACSDSZ7cdkH5ciI7eC3Lk0nTXANPe9AkXXP4bg0wkn2ipycG01WduFx7aMwdLhtQoen72yXBm5aajgcMYYGtow2+vhZLSE7hrFSbcnE4iRdKBSVbvYnE=
   deployment: nplayground/master
   on:
     repo: LeonardoCA/nplayground
-    branch: master
-    php: 5.6
-
 notifications:
   email:
     - leonard.odlozilik@gmail.com
