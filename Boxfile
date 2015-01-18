@@ -37,9 +37,12 @@ web1:
       - fast_cgi
       - include
       - log_config
+      - negotiation
       - mime
       - mime_magic
       - rewrite
+      - setenvif
+      - status
       - ssl
       - vhost_alias
 
