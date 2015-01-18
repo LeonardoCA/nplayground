@@ -25,6 +25,8 @@ web1:
   httpd_document_root: www
   httpd_modules:
       - autoindex
+      - authz_core
+      - authz_host
       - access
       - alias
       - dir
