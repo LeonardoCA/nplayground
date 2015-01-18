@@ -11,8 +11,24 @@
 	# RewriteBase /
 
 	# Redirect always to https
-	RewriteCond %{HTTPS} !=on
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+	#SSLOptions +StrictRequire
+    #SSLRequireSSL
+    # REQUIRE SSL EVEN WHEN MOD_SSL IS NOT LOADED
+    #RewriteCond %{HTTPS} off
+    #RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+    RewriteCond %{HTTPS} !=on [NC]
+    RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301]
+
+    ## MOST SECURE WAY TO REQUIRE SSL
+    # http://www.askapache.com/htaccess/apache-ssl-in-htaccess-examples.html
+    #SSLOptions +StrictRequire
+    #SSLRequireSSL
+    #SSLRequire %{HTTP_HOST} eq "askapache.com"
+    #ErrorDocument 403 https://askapache.com
+
+	#RewriteCond %{HTTPS} !=on
+    #RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301]
 
 	# prevents files starting with dot to be viewed by browser
 	RewriteRule /\.|^\. - [F]

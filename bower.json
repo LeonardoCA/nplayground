@@ -21,13 +21,13 @@
 	"dependencies": {
 		"jquery-ui": "1.11.1",
 		"codemirror": "~4.6.0",
-		"bootstrap": "~3.2.0",
+		"bootstrap": "~3.3.1",
 		"nette.ajax.js": "~2.0",
 		"google-code-prettify": "~1.0.3",
 		"bootstrap-toggle": "~1.1.0",
 		"datatables": "~1.10.2",
 		"datatables-bootstrap3": "*",
-		"nette-forms": "~2.2.2"
+		"nette-forms": "~2.2"
 	},
 	"resolutions": {
 		"datatables": "~1.10.2"
