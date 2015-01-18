@@ -24,6 +24,8 @@ web1:
       - temp
   httpd_document_root: www
   httpd_modules:
+      - autoindex
+      - dir
       - deflate
       - filter
       - include
