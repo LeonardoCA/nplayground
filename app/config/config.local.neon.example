@@ -8,3 +8,14 @@ nette:
 			explain:    true
 			reflection: discovered
 			autowired:  true
+	application:
+		debugger: false
+		catchExceptions: yes
+	container:
+		debugger: false
+	routing:
+		debugger: false
+
+smartDump:
+	traceMode: false  #false|number|all
+	showParams: false

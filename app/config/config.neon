@@ -64,10 +64,6 @@ extensions:
 	redis: Kdyby\Redis\DI\RedisExtension
 	console: Kdyby\Console\DI\ConsoleExtension
 
-smartDump:
-	traceMode: false  #false|number|all
-	showParams: false
-
 redis:
 	host: %redis.host%
 	port: %redis.port%
