@@ -22,6 +22,7 @@ web1:
     storage1:
       - log
       - temp
+  httpd_php_interpreter: mod_php
   httpd_document_root: www
   httpd_modules:
       - autoindex
