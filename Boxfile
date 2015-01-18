@@ -46,7 +46,7 @@ web1:
     - tidy
     - tokenizer
   after_deploy:
-    - "rm -R temp/cache"
+    - "rm -rf temp/cache/*"
 
 
 database1:
