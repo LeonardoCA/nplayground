@@ -10,16 +10,6 @@
 	RewriteEngine On
 	# RewriteBase /
 
-	# Redirect always to https
-	#SSLOptions +StrictRequire
-    #SSLRequireSSL
-    # REQUIRE SSL EVEN WHEN MOD_SSL IS NOT LOADED
-    #RewriteCond %{HTTPS} off
-    #RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
-
-    RewriteCond %{HTTPS} !=on [NC]
-    RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301]
-
     ## MOST SECURE WAY TO REQUIRE SSL
     # http://www.askapache.com/htaccess/apache-ssl-in-htaccess-examples.html
     #SSLOptions +StrictRequire
@@ -27,8 +17,12 @@
     #SSLRequire %{HTTP_HOST} eq "askapache.com"
     #ErrorDocument 403 https://askapache.com
 
-	#RewriteCond %{HTTPS} !=on
-    #RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301]
+    #RewriteCond %{HTTPS} !=on [NC]
+    #RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R=301]
+
+	# in cloude different headers must be refferenced (pagoda)
+	RewriteCond %{HTTP:X-Forwarded-Proto} =http
+	RewriteRule (.*) https://%{HTTP_HOST}/$1 [R]
 
 	# prevents files starting with dot to be viewed by browser
 	RewriteRule /\.|^\. - [F]
