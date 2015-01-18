@@ -3,7 +3,7 @@ build:
   version: 5.5
   stability: production
   before_exec:
-    - "npm install grunt"
+    - "npm install grunt-cli"
     - "npm install"
     - "grunt build"
   exec:
