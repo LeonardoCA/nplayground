@@ -10,6 +10,7 @@ build:
     - "composer install --no-interaction --prefer-source"
   after_exec:
     - "cp app/config/pagoda.production.php app/config/config.local.php"
+    - "touch app/config.local.neon"
   lib_dir: vendor
   reuse_libs: true
 
