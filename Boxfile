@@ -21,21 +21,21 @@ web1:
   stability: production
   network_dirs:
     storage1:
-      - temp
       - log
+      - temp
   httpd_document_root: www
   php_extensions:
+    - apc
+    - curl
+    - fileinfo
+    - gd
+    - intl
     - json
     - mbstring
-    - curl
+    - mcrypt
     - pdo_mysql
-    - gd
-    - apc
-    - fileinfo
-    - intl
-    - tokenizer
-    - intl
     - tidy
+    - tokenizer
   after_deploy:
     - "rm -R temp/cache"
 
