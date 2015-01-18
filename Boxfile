@@ -9,7 +9,7 @@ build:
   exec:
     - "composer install --no-interaction --prefer-source"
   after_exec:
-    - "cp app/config/pagoda.production.php app/config/config.local.neon"
+    - "cp app/config/pagoda.production.php app/config/config.local.php"
   lib_dir: vendor
   reuse_libs: true
 
