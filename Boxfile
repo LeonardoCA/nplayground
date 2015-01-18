@@ -26,15 +26,20 @@ web1:
   httpd_modules:
       - autoindex
       - access
+      - alias
       - dir
       - deflate
+      - echo
+      - env
       - filter
+      - fast_cgi
       - include
       - env
       - mime
       - mime_magic
       - rewrite
       - ssl
+      - vhost_alias
 
   php_extensions:
     - apc
