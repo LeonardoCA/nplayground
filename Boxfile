@@ -3,9 +3,9 @@ build:
   version: 5.5
   stability: production
   before_exec:
-    - "npm install grunt-cli"
     - "npm install"
-    - "grunt build"
+    - "npm install grunt-cli"
+    - "node_modules/grunt-cli/bin/grunt build"
   exec:
     - "composer install --no-interaction --prefer-source"
   after_exec:
