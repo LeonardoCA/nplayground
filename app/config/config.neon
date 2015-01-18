@@ -8,6 +8,14 @@ parameters:
 	appName: NPlayground
 	version: 0.0.5
 
+	database:
+		driver: mysql
+		host: localhost
+		port: 3306
+		dbname: nplayground
+		user: nplayground
+		password:
+
 php:
 	date.timezone: Europe/Prague
 
@@ -33,9 +41,9 @@ nette:
 
 	database:
 		default:
-			dsn: 'mysql:host=localhost;dbname=nplayground'
-			user: 'nplayground'
-			password: 'test1598!'
+			dsn: '%database.driver%:host=%database.host%;dbname=%database.dbname%'
+			user: %database.user%
+			password: %database.password%
 			debugger:   true
 			explain:    true
 			reflection: discovered

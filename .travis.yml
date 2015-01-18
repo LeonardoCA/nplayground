@@ -1,34 +1,24 @@
 language: php
 php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - hhvm
+- 5.4
+- 5.5
+- 5.6
+- hhvm
 matrix:
   fast_finish: true
   allow_failures:
-    - php: hhvm
+  - php: hhvm
 before_install: npm install -g grunt-cli
 install: npm install
 before_script:
-  - grunt build
-  - ./.travis.redis.sh
-  - composer self-update
-  - composer install --no-interaction --dev
-  - cp ./app/config/config.local.neon.example ./app/config/config.local.neon
-  - mysql -e 'create database nplayground;'
+- grunt build
+- "./.travis.redis.sh"
+- composer self-update
+- composer install --no-interaction --dev
+- cp ./app/config/config.local.neon.example ./app/config/config.local.neon
+- mysql -e 'create database nplayground;'
 script:
-  - vendor/bin/tester tests -s -p php -c tests/php.ini-unix
+- vendor/bin/tester tests -s -p php -c tests/php.ini-unix
 after_failure:
-  - for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
-deploy:
-  provider: cloudcontrol
-  email: leonard.odlozilik@gmail.com
-  password:
-    secure: mvP3E1OsHFjbWsS8+bCK43KFfGWplZbDxGLELjoJWLX+4hpp00K04foACSDSZ7cdkH5ciI7eC3Lk0nTXANPe9AkXXP4bg0wkn2ipycG01WduFx7aMwdLhtQoen72yXBm5aajgcMYYGtow2+vhZLSE7hrFSbcnE4iRdKBSVbvYnE=
-  deployment: nplayground/master
-  on:
-    repo: LeonardoCA/nplayground
-notifications:
-  email:
-    - leonard.odlozilik@gmail.com
+- for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
+

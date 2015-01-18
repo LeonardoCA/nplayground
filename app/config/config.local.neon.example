@@ -3,7 +3,7 @@ nette:
 		default:
 			dsn: 'mysql:host=localhost;dbname=nplayground'
 			user: 'nplayground'
-			password: 'test1598!'
+			password: ''
 			debugger:   true
 			explain:    true
 			reflection: discovered
