@@ -23,6 +23,17 @@ web1:
       - log
       - temp
   httpd_document_root: www
+  httpd_modules:
+      - alias
+      - deflate
+      - filter
+      - include
+      - env
+      - mime
+      - mime_magic
+      - rewrite
+      - ssl
+
   php_extensions:
     - apc
     - curl
