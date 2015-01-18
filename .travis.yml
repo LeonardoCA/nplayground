@@ -10,7 +10,7 @@ matrix:
   - php: hhvm
 services:
   - redis-server
-before_install: npm install -g bower && npm install -g grunt-cli
+before_install: sudo npm install -g bower && sudo npm install -g grunt-cli
 install: npm install && grunt build
 before_script:
 - "./.travis.redis.sh"
