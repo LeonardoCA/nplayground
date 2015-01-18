@@ -16,7 +16,7 @@ $configurator->createRobotLoader()
 	->register();
 
 $configurator->addConfig(__DIR__ . '/config/config.neon');
-if (getenv('DEPLOYMENT_DESTINATION') == 'pagoda') {
+if (getenv('DEPLOYMENT_DESTINATION') == 'pagodabox') {
 	$configurator->addConfig(__DIR__ . '/config/pagoda.production.php');
 } else {
 	$configurator->addConfig(__DIR__ . '/config/config.local.neon');
