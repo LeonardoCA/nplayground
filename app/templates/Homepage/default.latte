@@ -25,32 +25,12 @@
 				</div>
 			</div>
 			<div class="col-lg-7">
-				{var $testFormValues = array_key_exists('form', $_presenter->componentData) ? $_presenter->componentData['form']->getValues() : null}
-				{if $testFormValues}
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Data</h3>
-						</div>
-						<div class="panel-body no-padding">
-							{!Tracy\Dumper::toHtml($testFormValues)}
-						</div>
-					</div>
-				{/if}
 				{if $renderedComponentHtml}
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Html</h3>
-						</div>
-						<div class="panel-body no-padding">
-							<pre
-								class="prettyprint linenums pre-scrollable">{tidyFormatString($renderedComponentHtml)}</pre>
-						</div>
-					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">Html codemirror</h3>
 						</div>
-						<div class="panel-body no-padding">
+						<div class="panel-body no-padding" style="height: 500px;">
 							<label>
 							<textarea id="codemirror"
 								class="form-control">{tidyFormatString($renderedComponentHtml)}</textarea></label>
