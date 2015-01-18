@@ -15,7 +15,9 @@ parameters:
 		dbname: nplayground
 		user: nplayground
 		password:
-
+	redis:
+		host: 127.0.0.1
+		port: 6379
 php:
 	date.timezone: Europe/Prague
 
@@ -67,9 +69,11 @@ smartDump:
 	showParams: false
 
 redis:
-    journal: on
-    storage: on
-    session: on
+	host: %redis.host%
+	port: %redis.port%
+	journal: on
+	storage: on
+	session: on
 
 console:
-    url: http://www.nplayground.l
+	url: http://www.nplayground.l

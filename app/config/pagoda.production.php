@@ -9,5 +9,9 @@ return [
             'user' => getenv('DATABASE1_USER'),
             'password' => getenv('DATABASE1_PASS'),
         ],
+        'redis' => [
+            'host' => getenv('CACHE1_HOST'),
+            'port' => getenv('CACHE1_PORT'),
+        ]
     ],
 ];

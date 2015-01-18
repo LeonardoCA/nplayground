@@ -1,20 +1,52 @@
+build:
+  type: php
+  version: 5.5
+  stability: production
+  before_exec:
+    - "npm install"
+    - "grunt build"
+  exec:
+    - "composer install --no-interaction --prefer-source"
+  after_exec:
+    - "cp app/config/pagoda.production.php app/config/config.local.neon"
+  lib_dir: vendor
+  reuse_libs: true
+
 web1:
-  name: nette
-  shared_writable_dirs:
-    - temp
-    - log
-  document_root: www
+  name: NPlayground
+  type: php
+  version: 0.0.5
+  stability: production
+  network_dirs:
+    storage1:
+      - temp
+      - log
+  httpd_document_root: www
   php_extensions:
+    - json
+    - mbstring
+    - curl
     - pdo_mysql
     - gd
     - apc
     - fileinfo
     - intl
     - tokenizer
+    - intl
+    - tidy
   after_deploy:
     - "rm -R temp/cache"
-    - "cp app/config/pagoda.production.php app/config/config.local.neon"
 
-db1: #component type & number
-  name: nette
+
+database1:
+  name: nplayground
   type: mysql
+  topology: redundant
+
+storage1:
+  name: filestore
+  type: nfs
+
+cache1:
+  name: sessions
+  type: redis
